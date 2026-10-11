@@ -30,8 +30,17 @@ export function DepthMeter() {
          No React state changes, so nothing re-renders while scrolling. */
       if (window.innerWidth <= 900) {
         const items = el.querySelectorAll('.ap-item'), line = window.innerHeight * 0.55
+        const host = el.querySelector('.ap-in'), hr = host ? host.getBoundingClientRect() : null
         let a = 0
-        items.forEach((li, i) => { const q = li.getBoundingClientRect(); if (q.top + q.height / 2 <= line) a = i })
+        items.forEach((li, i) => {
+          const q = li.getBoundingClientRect(), c = q.top + q.height / 2
+          if (c <= line) a = i
+          /* checkpoint positions, relative to the list container (written only when layout changes) */
+          if (hr) {
+            const v = Math.round(c - hr.top) + 'px', k = '--c' + i
+            if (host.style.getPropertyValue(k) !== v) host.style.setProperty(k, v)
+          }
+        })
         const v = String(a)
         if (el.dataset.step !== v) el.dataset.step = v
         if (geoRef.current) { geoRef.current = null; setGeo(null) }
@@ -73,8 +82,8 @@ export function DepthMeter() {
       setOn(vis); setStep(s)
     }
     const h = () => { if (!raf) raf = requestAnimationFrame(f) }
-    window.addEventListener('scroll', h, { passive: true }); window.addEventListener('resize', h); f()
-    return () => { window.removeEventListener('scroll', h); window.removeEventListener('resize', h) }
+    window.addEventListener('scroll', h, { passive: true }); window.addEventListener('resize', h); window.addEventListener('load', h); document.fonts && document.fonts.ready.then(h); f()
+    return () => { window.removeEventListener('scroll', h); window.removeEventListener('resize', h); window.removeEventListener('load', h) }
   }, [])
   useEffect(() => {
     let raf = 0

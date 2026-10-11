@@ -193,152 +193,204 @@ function Count({ html: h }) {
   )
 }
 
-/* Hero video: two stacked players, the next one smoothly fades in over the last 1.4s of the current one */
-function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
+/* Seamless looping video: two stacked players cross-fade over the last 1.4s of each pass.
+   With `sound`, the clip's own audio is routed through Web Audio gain nodes so every start,
+   stop and loop seam fades smoothly on every browser (iOS ignores element.volume).
+   Browsers only allow sound after a user gesture, so playback starts muted and the audio
+   rises gently on the visitor's first tap, click or key press. */
+function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', sound = false, soundOn = true }) {
   const containerRef = useRef(null)
   const A = useRef(null)
   const B = useRef(null)
+  const wantRef = useRef(soundOn)
+  const applyRef = useRef(null)
+
+  useEffect(() => {
+    wantRef.current = soundOn
+    if (applyRef.current) applyRef.current(soundOn ? 1.6 : 0.6)
+  }, [soundOn])
 
   useEffect(() => {
     const a = A.current
     const b = B.current
     const container = containerRef.current
     if (!a || !b || !container) return
+    /* muted must be a property (React's `muted` attribute is unreliable), or autoplay is blocked */
+    ;[a, b].forEach(v => { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.playsInline = true })
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const F = 1.4
-    let cur = a, nxt = b, busy = false, seen = true, timer = 0
+    let cur = a, nxt = b, busy = false, seen = true, timer = 0, alive = true
 
-    /* Soft audio: every start fades in, every stop fades out (the clip's own sound never cuts abruptly) */
-    const fades = new Map()
+    const playSafe = v => {
+      try { const p = v.play(); if (p && p.catch) p.catch(() => {}) } catch (e) {}
+    }
+
+    /* ---------- audio ---------- */
+    let ctx = null, master = null, unlocked = false
+    const gains = new Map()
+    const raf = new Map()
     const ease = k => k * k * (3 - 2 * k)
-    const fadeTo = (v, to, ms, done) => {
-      cancelAnimationFrame(fades.get(v))
-      let from = 1
+    const audible = () => sound && unlocked && wantRef.current && seen && !covered && !document.hidden && !window.paused
+    /* scroll-linked level: full on the hero, easing down as About rises, silent before it arrives */
+    let scrollLvl = 1, covered = false
+    const readScroll = () => {
+      const h = window.innerHeight || 1, y = window.scrollY
+      const k = Math.min(1, Math.max(0, 1 - y / (h * 0.8)))
+      scrollLvl = k * k * (3 - 2 * k)
+      covered = y >= h * 0.98
+    }
+    readScroll()
+    const level = () => (audible() ? scrollLvl : 0)
+
+    /* fallback fades on element.volume (desktop browsers without Web Audio) */
+    const volTo = (v, to, ms) => {
+      cancelAnimationFrame(raf.get(v))
+      let from = 0
       try { from = v.volume } catch (e) {}
       const t0 = performance.now()
       const step = now => {
         const k = Math.min(1, (now - t0) / ms)
         try { v.volume = Math.max(0, Math.min(1, from + (to - from) * ease(k))) } catch (e) {}
-        if (k < 1) fades.set(v, requestAnimationFrame(step))
-        else if (done) done()
+        if (k < 1) raf.set(v, requestAnimationFrame(step))
       }
-      fades.set(v, requestAnimationFrame(step))
+      raf.set(v, requestAnimationFrame(step))
     }
-    const setVol = (v, x) => { cancelAnimationFrame(fades.get(v)); try { v.volume = x } catch (e) {} }
+    const ramp = (param, to, sec) => {
+      const t = ctx.currentTime
+      param.cancelScheduledValues(t)
+      param.setValueAtTime(param.value, t)
+      param.linearRampToValueAtTime(to, t + Math.max(0.02, sec))
+    }
+    /* overall level: rises when audible, sinks otherwise */
+    const apply = (sec = 1.6) => {
+      if (!sound || !unlocked) return
+      const to = level()
+      if (ctx) { if (ctx.state === 'suspended') ctx.resume().catch(() => {}); ramp(master.gain, to, sec) }
+      else volTo(cur, to, sec * 1000)
+    }
+    applyRef.current = apply
 
-    const playSafe = v => {
+    const unlock = () => {
+      if (unlocked || !sound) return
+      unlocked = true
       try {
-        const p = v.play()
-        if (p && p.catch) p.catch(() => {})
-      } catch (e) {}
+        const AC = window.AudioContext || window.webkitAudioContext
+        if (AC) {
+          ctx = new AC()
+          master = ctx.createGain()
+          master.gain.value = 0
+          master.connect(ctx.destination)
+          ;[a, b].forEach(v => {
+            const g = ctx.createGain()
+            g.gain.value = v === cur ? 1 : 0
+            ctx.createMediaElementSource(v).connect(g)
+            g.connect(master)
+            gains.set(v, g)
+          })
+          ctx.resume().catch(() => {})
+        }
+      } catch (e) { ctx = null }
+      ;[a, b].forEach(v => { if (!ctx) { try { v.volume = 0 } catch (e) {} } v.muted = false })
+      if (seen && !covered && !document.hidden && !window.paused && cur.paused) playSafe(cur)
+      apply(2.6)
+      evs.forEach(n => window.removeEventListener(n, unlock, true))
     }
-    /* start (or resume) a clip with its sound rising gently from silence */
-    const playSoft = (v, ms = 2600) => {
-      setVol(v, 0)
-      playSafe(v)
-      fadeTo(v, 1, ms)
-    }
-    /* stop a clip by letting its sound sink first, then pausing */
-    const pauseSoft = (v, ms = 700) => {
-      if (v.paused) return
-      fadeTo(v, 0, ms, () => { try { v.pause() } catch (e) {} })
-    }
+    const evs = ['pointerdown', 'touchend', 'keydown', 'click']
+    if (sound) evs.forEach(n => window.addEventListener(n, unlock, { capture: true, passive: true }))
 
+    /* ---------- seamless loop ---------- */
     const swapVideos = () => {
       if (busy || !seen || document.hidden || window.paused) return
       busy = true
       const old = cur
-
-      // Start playing next video immediately, its sound rising as the old one sinks (equal-length crossfade)
-      setVol(nxt, 0)
       playSafe(nxt)
-      fadeTo(nxt, 1, F * 1000)
-      fadeTo(old, 0, F * 1000)
+      if (sound && unlocked) {
+        if (ctx) { ramp(gains.get(nxt).gain, 1, F); ramp(gains.get(old).gain, 0, F) }
+        else if (audible()) { volTo(nxt, level(), F * 1000); volTo(old, 0, F * 1000) }
+      }
       nxt.style.zIndex = '2'
       old.style.zIndex = '1'
       nxt.classList.add('on')
-
       timer = setTimeout(() => {
-        try {
-          old.pause()
-          old.classList.remove('on')
-          old.currentTime = 0
-        } catch (e) {}
+        if (!alive) return
+        try { old.pause(); old.classList.remove('on'); old.currentTime = 0 } catch (e) {}
         cur = nxt
         nxt = old
         busy = false
       }, F * 1000 + 80)
     }
 
-    const onTimeUpdate = (e) => {
-      const v = e.target
-      if (v !== cur || busy || !seen || document.hidden || window.paused) return
-      if (v.duration && v.currentTime >= v.duration - F) {
-        swapVideos()
-      }
+    const near = v => v === cur && !busy && v.duration && v.currentTime >= v.duration - F
+    const onTime = e => { if (seen && !document.hidden && !window.paused && near(e.target)) swapVideos() }
+    const onEnded = e => { if (e.target === cur) { try { e.target.currentTime = 0 } catch (err) {} playSafe(e.target) } }
+    ;[a, b].forEach(v => { v.addEventListener('timeupdate', onTime, { passive: true }); v.addEventListener('ended', onEnded, { passive: true }) })
+
+    const safety = setInterval(() => { if (seen && !document.hidden && !window.paused && near(cur)) swapVideos() }, 250)
+
+    /* pause off-screen: sound sinks first, then the picture stops */
+    let pauseT = 0
+    const stopSoft = () => {
+      apply(0.8)
+      clearTimeout(pauseT)
+      pauseT = setTimeout(() => { if (!seen || covered || document.hidden) { try { a.pause(); b.pause() } catch (e) {} } }, sound && unlocked ? 850 : 0)
+    }
+    const startSoft = () => {
+      clearTimeout(pauseT)
+      if (cur.paused) playSafe(cur)
+      apply(1.6)
     }
 
-    const onEnded = (e) => {
-      const v = e.target
-      if (v === cur) {
-        try { v.currentTime = 0 } catch (err) {}
-        playSafe(v)
-      }
-    }
-
-    a.addEventListener('timeupdate', onTimeUpdate, { passive: true })
-    b.addEventListener('timeupdate', onTimeUpdate, { passive: true })
-    a.addEventListener('ended', onEnded, { passive: true })
-    b.addEventListener('ended', onEnded, { passive: true })
-
-    playSoft(a)
-
-    // Periodic safety check to ensure seamless loop
-    const safetyCheck = setInterval(() => {
-      if (!busy && seen && !document.hidden && !window.paused && cur && cur.duration) {
-        if (cur.currentTime >= cur.duration - F) {
-          swapVideos()
+    /* follow the scroll: level glides with the page; the picture pauses once About fully covers the hero */
+    let sRaf = 0, wasCovered = covered
+    const onScroll = () => {
+      if (sRaf) return
+      sRaf = requestAnimationFrame(() => {
+        sRaf = 0
+        readScroll()
+        if (sound && unlocked) {
+          if (ctx) { const t = ctx.currentTime; master.gain.cancelScheduledValues(t); master.gain.setTargetAtTime(level(), t, 0.18) }
+          else volTo(cur, level(), 260)
         }
-      }
-    }, 250)
+        if (covered !== wasCovered) {
+          wasCovered = covered
+          if (covered) stopSoft()
+          else if (seen && !document.hidden && !window.paused) startSoft()
+        }
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     const io = new IntersectionObserver(([e]) => {
       seen = e.isIntersecting
-      if (seen && !document.hidden && !window.paused) {
-        if (cur.paused) playSoft(cur, 1600)
-      } else {
-        pauseSoft(a)
-        pauseSoft(b)
-      }
+      if (seen && !covered && !document.hidden && !window.paused) startSoft()
+      else stopSoft()
     }, { threshold: 0.05 })
     io.observe(container)
 
-    const onVis = () => {
-      if (document.hidden) {
-        try { a.pause(); b.pause() } catch (e) {}
-      } else if (seen && !window.paused) {
-        playSoft(cur, 1600)
-      }
-    }
+    const onVis = () => { if (document.hidden) { apply(0.2); try { a.pause(); b.pause() } catch (e) {} } else if (seen && !covered && !window.paused) startSoft() }
     document.addEventListener('visibilitychange', onVis)
 
+    if (!covered) playSafe(a)
+
     return () => {
-      clearInterval(safetyCheck)
+      alive = false
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(sRaf)
+      clearInterval(safety)
       clearTimeout(timer)
-      fades.forEach(id => cancelAnimationFrame(id))
+      clearTimeout(pauseT)
+      raf.forEach(id => cancelAnimationFrame(id))
       io.disconnect()
       document.removeEventListener('visibilitychange', onVis)
-      a.removeEventListener('timeupdate', onTimeUpdate)
-      b.removeEventListener('timeupdate', onTimeUpdate)
-      a.removeEventListener('ended', onEnded)
-      b.removeEventListener('ended', onEnded)
-      try { a.pause(); b.pause() } catch (e) {}
+      evs.forEach(n => window.removeEventListener(n, unlock, true))
+      ;[a, b].forEach(v => { v.removeEventListener('timeupdate', onTime); v.removeEventListener('ended', onEnded); try { v.pause() } catch (e) {} })
+      applyRef.current = null
+      if (ctx) ctx.close().catch(() => {})
     }
-  }, [])
+  }, [sound])
 
   const p = {
-    muted: true,
     playsInline: true,
     preload: 'auto',
     poster: U(poster),
@@ -348,8 +400,8 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
 
   return (
     <div ref={containerRef} className="vid">
-      <video ref={A} className="on" {...p}><source src={U(src)} type="video/mp4" /></video>
-      <video ref={B} {...p}><source src={U(src)} type="video/mp4" /></video>
+      <video ref={A} className="on" muted {...p}><source src={U(src)} type="video/mp4" /></video>
+      <video ref={B} muted {...p} preload={sound ? 'auto' : 'metadata'}><source src={U(src)} type="video/mp4" /></video>
     </div>
   )
 }
@@ -461,7 +513,7 @@ const Nav = memo(function Nav({ active, solid }) {
 
 const Hero = memo(() => (
   <section id="top" className="hero">
-    <LoopVideo /><div className="scrim" />
+    <LoopVideo sound /><div className="scrim" />
     <div className="hero-in">
       <img className="hero-logo a11y-keep" src={U('/img/logo-white.png')} alt="Anchorage Alpha" />
       <p className="hero-line">Anchored in Insight.<br/>Steered by Purpose.</p>
@@ -607,8 +659,9 @@ const Approach = memo(() => (
       <div className="ap-pin">
         <div className="wrap ap-in">
           <div className="ap-head"><Label>Our approach</Label><Rv as="h2" className="h2">A Deeper Perspective</Rv></div>
+          <div className="ap-mg" aria-hidden="true"><i className="mg-track" /><i className="mg-fill" />{C.approach.map((_, i) => <i key={i} className={`mg-tick t${i}`} />)}<b className="mg-dot" /></div>
           <ol className="ap-list">{C.approach.map((a, i) => (
-            <Rv as="li" key={i} d={i * 90} className="ap-item"><div><span className="ap-depth" aria-hidden="true">{['0', '2,000', '4,000', '6,000', '8,000', '10,000'][i]} m</span><h3>{a.h}</h3><p>{a.p}</p></div></Rv>))}</ol>
+            <Rv as="li" key={i} d={i * 90} className="ap-item"><div><h3>{a.h}</h3><p>{a.p}</p></div></Rv>))}</ol>
         </div>
       </div>
     </div>
