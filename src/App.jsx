@@ -194,214 +194,155 @@ function Count({ html: h }) {
 }
 
 /* Seamless looping video: two stacked players cross-fade over the last 1.4s of each pass.
-   With `sound`, the clip's own audio is routed through Web Audio gain nodes so every start,
-   stop and loop seam fades smoothly on every browser (iOS ignores element.volume).
-   Browsers only allow sound after a user gesture, so playback starts muted and the audio
-   rises gently on the visitor's first tap, click or key press. */
-function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', sound = false, soundOn = true }) {
+   Pictures only (sound = false) simply play while on screen.
+   The hero (sound = true) also carries its own audio:
+   - it starts muted (required for autoplay) and becomes audible on the visitor's first tap/click/key;
+   - the level is read from the scroll position on every animation frame: full on the hero,
+     easing down as About rises, silent before About arrives; then the picture pauses;
+   - volume is set directly on the <video> elements; where the browser ignores that (iOS),
+     the same level is applied through a Web Audio gain node. */
+function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', sound = false }) {
   const containerRef = useRef(null)
   const A = useRef(null)
   const B = useRef(null)
-  const wantRef = useRef(soundOn)
-  const applyRef = useRef(null)
 
   useEffect(() => {
-    wantRef.current = soundOn
-    if (applyRef.current) applyRef.current(soundOn ? 1.6 : 0.6)
-  }, [soundOn])
-
-  useEffect(() => {
-    const a = A.current
-    const b = B.current
-    const container = containerRef.current
+    const a = A.current, b = B.current, container = containerRef.current
     if (!a || !b || !container) return
-    /* muted must be a property (React's `muted` attribute is unreliable), or autoplay is blocked */
     ;[a, b].forEach(v => { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.playsInline = true })
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const F = 1.4
-    let cur = a, nxt = b, busy = false, seen = true, timer = 0, alive = true
+    let cur = a, nxt = b, busy = false, inView = true, alive = true, swapT = 0
+    const playSafe = v => { try { const p = v.play(); if (p && p.catch) p.catch(() => {}) } catch (e) {} }
 
-    const playSafe = v => {
-      try { const p = v.play(); if (p && p.catch) p.catch(() => {}) } catch (e) {}
+    /* ---------- sound (hero only) ---------- */
+    let unlocked = false, ctx = null, useGain = false
+    const gainOf = new Map()
+    const w = new Map([[a, 1], [b, 0]])          /* loop cross-fade weights */
+    let level = 0                                  /* smoothed output level 0..1 */
+    const heroH = () => window.innerHeight || 1
+    const scrollY = () => window.scrollY || document.documentElement.scrollTop || 0
+    const covered = () => sound && scrollY() >= heroH() * 0.98
+    const target = () => {
+      if (!sound || !unlocked || document.hidden || window.paused || !inView) return 0
+      const k = Math.min(1, Math.max(0, 1 - scrollY() / (heroH() * 0.8)))
+      return k * k * (3 - 2 * k)
     }
-
-    /* ---------- audio ---------- */
-    let ctx = null, master = null, unlocked = false
-    const gains = new Map()
-    const raf = new Map()
-    const ease = k => k * k * (3 - 2 * k)
-    const audible = () => sound && unlocked && wantRef.current && seen && !covered && !document.hidden && !window.paused
-    /* scroll-linked level: full on the hero, easing down as About rises, silent before it arrives */
-    let scrollLvl = 1, covered = false
-    const readScroll = () => {
-      const h = window.innerHeight || 1, y = window.scrollY
-      const k = Math.min(1, Math.max(0, 1 - y / (h * 0.8)))
-      scrollLvl = k * k * (3 - 2 * k)
-      covered = y >= h * 0.98
+    const out = (v, x) => {
+      x = Math.max(0, Math.min(1, x))
+      if (useGain) { const g = gainOf.get(v); if (g) g.gain.value = x }
+      else { try { v.volume = x } catch (e) {} }
     }
-    readScroll()
-    const level = () => (audible() ? scrollLvl : 0)
-
-    /* fallback fades on element.volume (desktop browsers without Web Audio) */
-    const volTo = (v, to, ms) => {
-      cancelAnimationFrame(raf.get(v))
-      let from = 0
-      try { from = v.volume } catch (e) {}
-      const t0 = performance.now()
-      const step = now => {
-        const k = Math.min(1, (now - t0) / ms)
-        try { v.volume = Math.max(0, Math.min(1, from + (to - from) * ease(k))) } catch (e) {}
-        if (k < 1) raf.set(v, requestAnimationFrame(step))
-      }
-      raf.set(v, requestAnimationFrame(step))
+    let loop = 0, lastT = 0
+    const tick = now => {
+      loop = 0
+      const dt = Math.min(0.1, lastT ? (now - lastT) / 1000 : 0.016); lastT = now
+      const t = target()
+      /* glide: quicker on the way down, gentle on the way up */
+      const rate = t < level ? 5 : 1.6
+      level += (t - level) * (1 - Math.exp(-rate * dt))
+      if (Math.abs(t - level) < 0.002) level = t
+      out(a, level * w.get(a)); out(b, level * w.get(b))
+      if (alive && (level > 0 || t > 0 || busy)) loop = requestAnimationFrame(tick)
+      else lastT = 0
     }
-    const ramp = (param, to, sec) => {
-      const t = ctx.currentTime
-      param.cancelScheduledValues(t)
-      param.setValueAtTime(param.value, t)
-      param.linearRampToValueAtTime(to, t + Math.max(0.02, sec))
-    }
-    /* overall level: rises when audible, sinks otherwise */
-    const apply = (sec = 1.6) => {
-      if (!sound || !unlocked) return
-      const to = level()
-      if (ctx) { if (ctx.state === 'suspended') ctx.resume().catch(() => {}); ramp(master.gain, to, sec) }
-      else volTo(cur, to, sec * 1000)
-    }
-    applyRef.current = apply
+    const kick = () => { if (sound && unlocked && !loop && alive) loop = requestAnimationFrame(tick) }
 
     const unlock = () => {
       if (unlocked || !sound) return
       unlocked = true
-      try {
-        const AC = window.AudioContext || window.webkitAudioContext
-        if (AC) {
+      /* can this browser change element volume? iOS reports 1 regardless */
+      let canVol = true
+      try { a.volume = 0.5; canVol = Math.abs(a.volume - 0.5) < 0.01; a.volume = 0 } catch (e) { canVol = false }
+      if (!canVol) {
+        try {
+          const AC = window.AudioContext || window.webkitAudioContext
           ctx = new AC()
-          master = ctx.createGain()
-          master.gain.value = 0
-          master.connect(ctx.destination)
-          ;[a, b].forEach(v => {
-            const g = ctx.createGain()
-            g.gain.value = v === cur ? 1 : 0
-            ctx.createMediaElementSource(v).connect(g)
-            g.connect(master)
-            gains.set(v, g)
-          })
-          ctx.resume().catch(() => {})
-        }
-      } catch (e) { ctx = null }
-      ;[a, b].forEach(v => { if (!ctx) { try { v.volume = 0 } catch (e) {} } v.muted = false })
-      if (seen && !covered && !document.hidden && !window.paused && cur.paused) playSafe(cur)
-      apply(2.6)
+          ;[a, b].forEach(v => { const g = ctx.createGain(); g.gain.value = 0; ctx.createMediaElementSource(v).connect(g); g.connect(ctx.destination); gainOf.set(v, g) })
+          ctx.resume && ctx.resume().catch(() => {})
+          useGain = true
+        } catch (e) { useGain = false }
+      }
+      out(a, 0); out(b, 0)
+      a.muted = false; b.muted = false
+      if (!covered() && inView && !document.hidden && !window.paused && cur.paused) playSafe(cur)
       evs.forEach(n => window.removeEventListener(n, unlock, true))
+      kick()
     }
     const evs = ['pointerdown', 'touchend', 'keydown', 'click']
     if (sound) evs.forEach(n => window.addEventListener(n, unlock, { capture: true, passive: true }))
 
     /* ---------- seamless loop ---------- */
-    const swapVideos = () => {
-      if (busy || !seen || document.hidden || window.paused) return
+    const animW = (from, to) => {
+      const t0 = performance.now()
+      const step = now => {
+        if (!alive) return
+        const k = Math.min(1, (now - t0) / (F * 1000)), e = k * k * (3 - 2 * k)
+        w.set(to, e); w.set(from, 1 - e)
+        if (k < 1) requestAnimationFrame(step)
+      }
+      requestAnimationFrame(step)
+    }
+    const swap = () => {
+      if (busy || !running()) return
       busy = true
       const old = cur
       playSafe(nxt)
-      if (sound && unlocked) {
-        if (ctx) { ramp(gains.get(nxt).gain, 1, F); ramp(gains.get(old).gain, 0, F) }
-        else if (audible()) { volTo(nxt, level(), F * 1000); volTo(old, 0, F * 1000) }
-      }
-      nxt.style.zIndex = '2'
-      old.style.zIndex = '1'
+      if (sound) { animW(old, nxt); kick() }
+      nxt.style.zIndex = '2'; old.style.zIndex = '1'
       nxt.classList.add('on')
-      timer = setTimeout(() => {
+      swapT = setTimeout(() => {
         if (!alive) return
         try { old.pause(); old.classList.remove('on'); old.currentTime = 0 } catch (e) {}
-        cur = nxt
-        nxt = old
-        busy = false
+        cur = nxt; nxt = old; busy = false
       }, F * 1000 + 80)
     }
-
+    const running = () => inView && !covered() && !document.hidden && !window.paused
     const near = v => v === cur && !busy && v.duration && v.currentTime >= v.duration - F
-    const onTime = e => { if (seen && !document.hidden && !window.paused && near(e.target)) swapVideos() }
+    const onTime = e => { if (running() && near(e.target)) swap() }
     const onEnded = e => { if (e.target === cur) { try { e.target.currentTime = 0 } catch (err) {} playSafe(e.target) } }
     ;[a, b].forEach(v => { v.addEventListener('timeupdate', onTime, { passive: true }); v.addEventListener('ended', onEnded, { passive: true }) })
+    const safety = setInterval(() => { if (running() && near(cur)) swap() }, 250)
 
-    const safety = setInterval(() => { if (seen && !document.hidden && !window.paused && near(cur)) swapVideos() }, 250)
-
-    /* pause off-screen: sound sinks first, then the picture stops */
+    /* ---------- play / pause ---------- */
     let pauseT = 0
-    const stopSoft = () => {
-      apply(0.8)
-      clearTimeout(pauseT)
-      pauseT = setTimeout(() => { if (!seen || covered || document.hidden) { try { a.pause(); b.pause() } catch (e) {} } }, sound && unlocked ? 850 : 0)
+    const sync = () => {
+      kick()
+      if (running()) { clearTimeout(pauseT); pauseT = 0; if (cur.paused) playSafe(cur) }
+      else if (!pauseT) {
+        /* let the sound settle first, then stop the picture */
+        pauseT = setTimeout(() => { pauseT = 0; if (!running()) { try { a.pause(); b.pause() } catch (e) {} } }, sound && unlocked ? 700 : 0)
+      }
     }
-    const startSoft = () => {
-      clearTimeout(pauseT)
-      if (cur.paused) playSafe(cur)
-      apply(1.6)
-    }
-
-    /* follow the scroll: level glides with the page; the picture pauses once About fully covers the hero */
-    let sRaf = 0, wasCovered = covered
-    const onScroll = () => {
-      if (sRaf) return
-      sRaf = requestAnimationFrame(() => {
-        sRaf = 0
-        readScroll()
-        if (sound && unlocked) {
-          if (ctx) { const t = ctx.currentTime; master.gain.cancelScheduledValues(t); master.gain.setTargetAtTime(level(), t, 0.18) }
-          else volTo(cur, level(), 260)
-        }
-        if (covered !== wasCovered) {
-          wasCovered = covered
-          if (covered) stopSoft()
-          else if (seen && !document.hidden && !window.paused) startSoft()
-        }
-      })
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    const io = new IntersectionObserver(([e]) => {
-      seen = e.isIntersecting
-      if (seen && !covered && !document.hidden && !window.paused) startSoft()
-      else stopSoft()
-    }, { threshold: 0.05 })
+    const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync() }, { threshold: 0.02 })
     io.observe(container)
-
-    const onVis = () => { if (document.hidden) { apply(0.2); try { a.pause(); b.pause() } catch (e) {} } else if (seen && !covered && !window.paused) startSoft() }
+    let sRaf = 0
+    const onScroll = () => { if (!sRaf) sRaf = requestAnimationFrame(() => { sRaf = 0; sync() }) }
+    if (sound) window.addEventListener('scroll', onScroll, { passive: true })
+    const onVis = () => sync()
     document.addEventListener('visibilitychange', onVis)
 
-    if (!covered) playSafe(a)
+    if (running()) playSafe(a)
 
     return () => {
       alive = false
-      window.removeEventListener('scroll', onScroll)
-      cancelAnimationFrame(sRaf)
-      clearInterval(safety)
-      clearTimeout(timer)
-      clearTimeout(pauseT)
-      raf.forEach(id => cancelAnimationFrame(id))
+      clearInterval(safety); clearTimeout(swapT); clearTimeout(pauseT)
+      cancelAnimationFrame(loop); cancelAnimationFrame(sRaf)
       io.disconnect()
+      window.removeEventListener('scroll', onScroll)
       document.removeEventListener('visibilitychange', onVis)
       evs.forEach(n => window.removeEventListener(n, unlock, true))
       ;[a, b].forEach(v => { v.removeEventListener('timeupdate', onTime); v.removeEventListener('ended', onEnded); try { v.pause() } catch (e) {} })
-      applyRef.current = null
       if (ctx) ctx.close().catch(() => {})
     }
   }, [sound])
 
-  const p = {
-    playsInline: true,
-    preload: 'auto',
-    poster: U(poster),
-    'aria-hidden': true,
-    disablePictureInPicture: true
-  }
-
+  const p = { playsInline: true, poster: U(poster), 'aria-hidden': true, disablePictureInPicture: true }
   return (
     <div ref={containerRef} className="vid">
-      <video ref={A} className="on" muted {...p}><source src={U(src)} type="video/mp4" /></video>
-      <video ref={B} muted {...p} preload={sound ? 'auto' : 'metadata'}><source src={U(src)} type="video/mp4" /></video>
+      <video ref={A} className="on" muted preload="auto" {...p}><source src={U(src)} type="video/mp4" /></video>
+      <video ref={B} muted preload={sound ? 'auto' : 'metadata'} {...p}><source src={U(src)} type="video/mp4" /></video>
     </div>
   )
 }
