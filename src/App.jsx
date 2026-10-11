@@ -454,7 +454,7 @@ const Nav = memo(function Nav({ active, solid }) {
 
 const Hero = memo(() => (
   <section id="top" className="hero">
-    <LoopVideo sound /><div className="scrim" />
+    <LoopVideo /><div className="scrim" />
     <div className="hero-in">
       <img className="hero-logo a11y-keep" src={U('/img/logo-white.png')} alt="Anchorage Alpha" />
       <p className="hero-line">Anchored in Insight.<br/>Steered by Purpose.</p>
@@ -609,108 +609,28 @@ const Approach = memo(() => (
   </section>
 ))
 
-const CO_ICON_BOLT = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M13 2 5 13.5h5L10.5 22 19 10.5h-5z"/></svg>
-const CO_ICON_TREND = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 17l5.5-5.5 3.5 3.5L21 6"/><path d="M15 6h6v6"/></svg>
-const CO_ICON_BUILD = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9.5l5 3.2V9.5l5 3.2V5.5h4V21"/><path d="M9 17h1.5M13.5 17H15"/></svg>
-const CO_BUILD_WORDS = ['manufactur', 'facilit', 'plant', 'capex', 'infrastructur', 'capacity', 'network', 'platform', 'hardware', 'device', 'energy', 'solar', 'mining', 'resource', 'logistic', 'building', 'units', 'recycling', 'steel', 'wire']
-const CO_TREND_WORDS = ['scal', 'grow', 'expansion', 'expanding', 'demand', 'record', 'accelerat', 'adoption', 'uptime', 'return', 'revenue', 'margin', 'valuation']
-const coIcon = t => {
-  const s = (t || '').toLowerCase()
-  if (CO_BUILD_WORDS.some(k => s.includes(k))) return CO_ICON_BUILD
-  if (CO_TREND_WORDS.some(k => s.includes(k))) return CO_ICON_TREND
-  return CO_ICON_BOLT
-}
-
-function coData(f) {
-  const pts = f.pts || []
-  return {
-    logo: f.logo,
-    name: f.name,
-    tagline: f.tag || '',
-    points: pts,
-    quote: f.q || '',
-    person: f.who || '',
-    designation: f.role || '',
-    link: f.url || ''
-  }
-}
-
-function CoModal({ d }) {
-  return (
-    <div className="co-grid">
-      <div className="co-side">
-        <img className="co-logo" src={d.logo} alt="" />
-        <h3 className="co-name">{d.name}</h3>
-        <span className="co-rule" aria-hidden="true" />
-        <p className="co-tag">{d.tagline}</p>
-        {d.link && <a className="co-cta" href={d.link} target="_blank" rel="noopener">
-          <span className="co-cta-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12h15" /><path d="M13 6l6 6-6 6" /></svg></span>
-          <span className="co-cta-lb">Explore company</span>
-        </a>}
-      </div>
-      <div className="co-main">
-        <ul className="co-points">
-          {d.points.map((p, k) => <li key={k}><span className="co-ic" aria-hidden="true">{coIcon(p)}</span><span className="co-pt">{p}</span></li>)}
-        </ul>
-        <span className="co-div" aria-hidden="true" />
-        <div className="co-quote">
-          <p>{d.quote || '\u00A0'}</p>
-        </div>
-        <div className="co-attrib">
-          <b>{d.person}</b>
-          <span>{d.designation}</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function Portfolio() {
-  const [sel, setSel] = useState(-1)
-  const panel = useRef()
-  const f = sel >= 0 ? C.feat[sel] : null
-  useTrap(sel >= 0, panel)
-
-  useEffect(() => {
-    if (!f) return
-    pauseScroll(true)
-    const k = e => e.key === 'Escape' && setSel(-1)
-    window.addEventListener('keydown', k)
-    const x = document.querySelector('.modal.co .x')
-    x && x.focus()
-    return () => {
-      window.removeEventListener('keydown', k)
-      pauseScroll(false)
-    }
-  }, [f])
-
+  const arrow = <svg className="inv-arrow" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 10.5 10.5 3.5M5 3.5h5.5V9" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
   return (
     <section id="portfolio" className="sec">
       <div className="wrap">
         <SecLabel>A selection of our investments</SecLabel>
         <Rv as="h2" className="h2">Key Investments</Rv>
         <ul className="inv-grid">{C.grid.map((g, i) => {
-          const d = C.feat[i]
+          const inner = <>
+            <span className="inv-logo"><img src={g.logo} alt="" loading="lazy" /></span>
+            <span className="inv-name">{g.name}</span>
+            <span className="inv-d">{g.d}</span>
+            {g.url && arrow}
+          </>
           return (
             <Rv as="li" key={g.name} d={i * 40} className="inv-item">
-              <button className="inv-card" disabled={!d} aria-haspopup="dialog" onClick={() => setSel(i)}>
-                <span className="inv-logo"><img src={g.logo} alt="" loading="lazy" /></span>
-                <span className="inv-name">{g.name}</span>
-                <span className="inv-d">{g.d}</span>
-                {d && <svg className="inv-arrow" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h11M7.5 2.5 12 7l-4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>}
-              </button>
+              {g.url
+                ? <a className="inv-card" href={g.url} target="_blank" rel="noopener noreferrer" aria-label={`${g.name} website (opens in a new tab)`}>{inner}</a>
+                : <div className="inv-card is-static">{inner}</div>}
             </Rv>
           )
         })}</ul>
-      </div>
-      <div className={`modal co ${sel >= 0 ? 'open' : ''}`} aria-hidden={sel < 0}>
-        <div className="veil" onClick={() => setSel(-1)} />
-        <div className="mcard" role="dialog" aria-label={f ? f.name : 'Company details'} ref={panel} data-lenis-prevent>
-          {f && <>
-            <button className="x" onClick={() => setSel(-1)} aria-label="Close">&times;</button>
-            <CoModal d={coData(f)} />
-          </>}
-        </div>
       </div>
     </section>
   )

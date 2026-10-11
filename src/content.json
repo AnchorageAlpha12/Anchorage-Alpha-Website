@@ -34,8 +34,8 @@
     "h": "Twenty-five years before the first scheme.",
     "sub": "Independent thinking. Conviction through cycles.",
     "p": [
-      "Anchorage Capital is built upon the investing heritage of the Kothari family office, led by Rohit Kothari. For more than 25 years, the family has invested its own capital across Indian businesses spanning small, mid and large-cap companies, identifying opportunities early, taking a long-term view and holding through cycles.",
-      "This heritage of experience, deep relationships and disciplined capital allocation continues to shape Anchorage Capital today. The sponsor group commits significant capital alongside investors in every scheme.",
+      "Anchorage Alpha is built upon the investing heritage of the Kothari family office, led by Rohit Kothari. For more than 25 years, the family has invested its own capital across Indian businesses spanning small, mid and large-cap companies, identifying opportunities early, taking a long-term view and holding through cycles.",
+      "This heritage of experience, deep relationships and disciplined capital allocation continues to shape Anchorage Alpha today. The sponsor group commits significant capital alongside investors in every scheme.",
       "Rohit Kothari brings more than two decades of investing experience across Indian and global markets, with a track record spanning multiple market cycles. His investment approach centres on identifying enduring businesses, backing high-quality entrepreneurs and compounding value over the long term.",
       "With a strong history of entrepreneurship and operational excellence, he built and scaled Aroni Chemicals and Gwalior Chemicals into the world's second-largest producers of aluminium chloride and chlorotoluenes, acquired by Atofina of France in 2004 and LANXESS of Germany in 2008. In 2008, he founded Antique Stock Broking Limited, a leading mid-market brokerage and investment bank.",
       "Today, he serves as Founder & Executive Chairman of Anchorage Alpha, bringing together the perspective of an investor and entrepreneur."
@@ -448,62 +448,74 @@
     {
       "logo": "/img/98ccb19196.webp",
       "name": "Nxtra Data",
-      "d": "India’s largest data centre network"
+      "d": "India’s largest data centre network",
+      "url": "https://www.nxtra.in"
     },
     {
       "logo": "/img/7004b0e662.webp",
       "name": "Meril Life Sciences",
-      "d": "India’s largest home-grown medical device maker"
+      "d": "India’s largest home-grown medical device maker",
+      "url": "https://www.merillife.com"
     },
     {
       "logo": "/img/56a1a016f7.webp",
       "name": "Neysa Networks",
-      "d": "Among India’s Top 2 AI Neocloud Platforms"
+      "d": "Among India’s Top 2 AI Neocloud Platforms",
+      "url": "https://neysa.ai"
     },
     {
       "logo": "/img/93cde5b01d.webp",
       "name": "Precision Wires",
-      "d": "One of Asia’s leading winding wire manufacturers"
+      "d": "One of Asia’s leading winding wire manufacturers",
+      "url": "https://precisionwires.in"
     },
     {
       "logo": "/img/99d9c8dd14.webp",
       "name": "ACE Insurance Brokers",
-      "d": "A leading corporate insurance and reinsurance intermediary"
+      "d": "A leading corporate insurance and reinsurance intermediary",
+      "url": "https://aceinsurance.com"
     },
     {
       "logo": "/img/990ea266ac.webp",
       "name": "Enviro Infra Engineers",
-      "d": "A leading water and wastewater treatment EPC company"
+      "d": "A leading water and wastewater treatment EPC company",
+      "url": "https://www.eiel.in"
     },
     {
       "logo": "/img/bd8b239384.svg",
       "name": "Thriveni Earthmovers",
-      "d": "One of India’s largest private mineral value-chain powerhouses"
+      "d": "One of India’s largest private mineral value-chain powerhouses",
+      "url": "https://thriveni.com"
     },
     {
       "logo": "/img/2f01274676.webp",
       "name": "Qi Cap",
-      "d": "One of India’s premier AI driven quantitative research trading platforms"
+      "d": "One of India’s premier AI driven quantitative research trading platforms",
+      "url": "https://qicap.ai"
     },
     {
       "logo": "/img/9f1e744a5e.svg",
       "name": "Inox Clean Energy",
-      "d": "One of India’s fastest-growing integrated clean energy platforms"
+      "d": "One of India’s fastest-growing integrated clean energy platforms",
+      "url": "https://www.inoxgreen.com/"
     },
     {
       "logo": "/img/9a0a056f99.webp",
       "name": "Caliber Mining & Logistics",
-      "d": "One of India’s leading mineral resource and logistics platforms"
+      "d": "One of India’s leading mineral resource and logistics platforms",
+      "url": "https://cmll.in/"
     },
     {
       "logo": "/img/9c5cddae64.svg",
       "name": "GREW Solar",
-      "d": "One of India’s leading integrated solar equipment manufacturers"
+      "d": "One of India’s leading integrated solar equipment manufacturers",
+      "url": "https://thegrewsolar.com/"
     },
     {
       "logo": "/img/4172562d7c.webp",
       "name": "Qucev",
-      "d": "One of India’s most promising electric logistics companies"
+      "d": "One of India’s most promising electric logistics companies",
+      "url": "https://qucev.com/"
     }
   ],
   "faq": [

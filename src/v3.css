@@ -859,3 +859,9 @@ main #about.about2{background:var(--ivory)}
 @keyframes sndb{0%,100%{height:3px}50%{height:11px}}
 @media(max-width:899px){.snd{bottom:auto;top:84px;right:var(--gut);padding:7px 10px}.snd-lb{display:none}}
 @media(prefers-reduced-motion:reduce){.snd.on .snd-bars i{animation:none;height:7px}}
+
+/* ===== v33: investments link straight to company sites ===== */
+a.inv-card{color:inherit;text-decoration:none;cursor:pointer}
+a.inv-card:hover,a.inv-card:focus-visible{border-color:#C9B89B;transform:translateY(-2px);box-shadow:0 10px 24px -16px rgba(0,0,0,.25)}
+a.inv-card:hover .inv-arrow{transform:translate(2px,-2px);color:var(--ink)}
+.inv-card.is-static{cursor:default}
