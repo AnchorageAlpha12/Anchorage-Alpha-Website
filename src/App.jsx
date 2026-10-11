@@ -194,7 +194,7 @@ function Count({ html: h }) {
 }
 
 /* Hero video: two stacked players, the next one smoothly fades in over the last 1.4s of the current one */
-function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', sound = false }) {
+function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
   const containerRef = useRef(null)
   const A = useRef(null)
   const B = useRef(null)
@@ -208,8 +208,6 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', soun
 
     const F = 1.4
     let cur = a, nxt = b, busy = false, seen = true, timer = 0
-    /* Whether the sound is currently allowed to be heard; the about section takes it away. */
-    let audible = !!sound
 
     /* Soft audio: every start fades in, every stop fades out (the clip's own sound never cuts abruptly) */
     const fades = new Map()
@@ -233,22 +231,13 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', soun
       try {
         const p = v.play()
         if (p && p.catch) p.catch(() => {})
-        return p
       } catch (e) {}
-    }
-    /* Browsers refuse to autoplay an unmuted clip, so the players start muted and are unmuted once
-       playback is actually under way. Volume is still 0 at that moment, so the fade below brings the
-       sound up without a pop. */
-    const unmuteOnPlay = v => {
-      const p = playSafe(v)
-      if (!sound || !audible || !p || !p.then) return
-      p.then(() => { if (v.paused === false) { try { v.muted = false } catch (e) {} } }).catch(() => {})
     }
     /* start (or resume) a clip with its sound rising gently from silence */
     const playSoft = (v, ms = 2600) => {
       setVol(v, 0)
-      unmuteOnPlay(v)
-      if (audible) fadeTo(v, 1, ms)
+      playSafe(v)
+      fadeTo(v, 1, ms)
     }
     /* stop a clip by letting its sound sink first, then pausing */
     const pauseSoft = (v, ms = 700) => {
@@ -263,11 +252,9 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', soun
 
       // Start playing next video immediately, its sound rising as the old one sinks (equal-length crossfade)
       setVol(nxt, 0)
-      unmuteOnPlay(nxt)
-      if (audible) {
-        fadeTo(nxt, 1, F * 1000)
-        fadeTo(old, 0, F * 1000)
-      }
+      playSafe(nxt)
+      fadeTo(nxt, 1, F * 1000)
+      fadeTo(old, 0, F * 1000)
       nxt.style.zIndex = '2'
       old.style.zIndex = '1'
       nxt.classList.add('on')
@@ -296,7 +283,7 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', soun
       const v = e.target
       if (v === cur) {
         try { v.currentTime = 0 } catch (err) {}
-        unmuteOnPlay(v)
+        playSafe(v)
       }
     }
 
@@ -327,25 +314,6 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', soun
     }, { threshold: 0.05 })
     io.observe(container)
 
-    /* The hero keeps its sound for as long as it holds the screen, and hands it over to the about
-       section rather than carrying on to the legacy block, which is where a visitor hears it end. */
-    const silence = () => {
-      if (!audible) return
-      audible = false
-      ;[a, b].forEach(v => fadeTo(v, 0, 900, () => { try { v.muted = true } catch (e) {} }))
-    }
-    const unsilence = () => {
-      if (audible || !sound || !seen || document.hidden) return
-      audible = true
-      ;[a, b].forEach(v => { if (v === cur) { try { v.muted = false } catch (e) {} } })
-      if (cur) { if (cur.paused) playSoft(cur, 1200); else fadeTo(cur, 1, 1200) }
-    }
-    const aboutEl = document.getElementById('about')
-    const ioAbout = aboutEl ? new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) silence(); else unsilence()
-    }, { rootMargin: '0px 0px -45% 0px', threshold: 0 }) : null
-    if (ioAbout) ioAbout.observe(aboutEl)
-
     const onVis = () => {
       if (document.hidden) {
         try { a.pause(); b.pause() } catch (e) {}
@@ -355,25 +323,12 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', soun
     }
     document.addEventListener('visibilitychange', onVis)
 
-    /* A browser that refuses to autoplay unmuted will pause the clip the moment we unmute it.
-       The first real interaction settles the question, so take the opportunity to start the
-       sound then, and stay out of the way once it has taken. */
-    const wake = () => {
-      if (!audible || !seen || document.hidden || !cur) return
-      if (cur.muted) { try { cur.muted = false } catch (e) {} }
-      if (cur.paused) playSoft(cur, 1600)
-    }
-    const GESTURES = ['pointerdown', 'keydown', 'touchstart', 'wheel', 'scroll']
-    if (sound) GESTURES.forEach(e => window.addEventListener(e, wake, { once: true, passive: true }))
-
     return () => {
       clearInterval(safetyCheck)
       clearTimeout(timer)
       fades.forEach(id => cancelAnimationFrame(id))
       io.disconnect()
-      if (ioAbout) ioAbout.disconnect()
       document.removeEventListener('visibilitychange', onVis)
-      GESTURES.forEach(e => window.removeEventListener(e, wake))
       a.removeEventListener('timeupdate', onTimeUpdate)
       b.removeEventListener('timeupdate', onTimeUpdate)
       a.removeEventListener('ended', onEnded)
@@ -506,7 +461,7 @@ const Nav = memo(function Nav({ active, solid }) {
 
 const Hero = memo(() => (
   <section id="top" className="hero">
-    <LoopVideo sound /><div className="scrim" />
+    <LoopVideo /><div className="scrim" />
     <div className="hero-in">
       <img className="hero-logo a11y-keep" src={U('/img/logo-white.png')} alt="Anchorage Alpha" />
       <p className="hero-line">Anchored in Insight.<br/>Steered by Purpose.</p>

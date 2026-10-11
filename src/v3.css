@@ -683,8 +683,8 @@ main .team-sec{padding-top:clamp(40px,4.5vw,70px)}
 }
 
 /* 2 + 3. hero -> about: a clean curtain. The hero holds still while About slides over it on a crisp edge; no fog, no grey band */
-.hero-stack{position:relative;--ov:clamp(170px,24vh,330px)}
-.hero-stack>.hero{position:sticky;top:0}
+.hero-stack{position:relative}
+.hero-stack>.hero{position:sticky;top:0;--ov:0px}
 .hero::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:#06121f;opacity:calc(var(--p,0)*.55)}
 main #about.about2{background:var(--stone);margin-top:0;padding:clamp(64px,6.5vw,104px) var(--gut) clamp(56px,5.5vw,88px);box-shadow:0 -28px 60px -24px rgba(3,12,26,.55)}
 .about2::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(217,188,140,.7) 20%,rgba(217,188,140,.7) 80%,transparent);z-index:1}
