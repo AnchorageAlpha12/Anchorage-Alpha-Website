@@ -608,7 +608,7 @@ const Approach = memo(() => (
         <div className="wrap ap-in">
           <div className="ap-head"><Label>Our approach</Label><Rv as="h2" className="h2">A Deeper Perspective</Rv></div>
           <ol className="ap-list">{C.approach.map((a, i) => (
-            <Rv as="li" key={i} d={i * 90} className="ap-item"><div><h3>{a.h}</h3><p>{a.p}</p></div></Rv>))}</ol>
+            <Rv as="li" key={i} d={i * 90} className="ap-item"><div><span className="ap-depth" aria-hidden="true">{['0', '2,000', '4,000', '6,000', '8,000', '10,000'][i]} m</span><h3>{a.h}</h3><p>{a.p}</p></div></Rv>))}</ol>
         </div>
       </div>
     </div>

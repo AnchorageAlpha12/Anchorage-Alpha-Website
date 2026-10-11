@@ -790,3 +790,42 @@ main #about.about2{background:var(--ivory)}
  .legacy-sec .stats{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0}
  .legacy-sec .stats~.note{margin-top:0;padding:12px clamp(18px,3vw,40px) 16px;border-radius:0 0 10px 10px;background:rgba(255,253,248,.62);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(139,107,62,.28);border-top:1px solid rgba(139,107,62,.18);box-shadow:none;font-size:.7rem;line-height:1.55;color:#6b7580}
 }
+
+/* ===== v28/29: mobile approach — meter lives in the list, highlight steps by fade only ===== */
+.ap-depth{display:none}
+@media(max-width:900px){
+ .depth{display:none!important}
+ .ap-in,.approach-sec .wrap.ap-in{padding-left:var(--gut)!important;padding-right:var(--gut)!important}
+ .ap-list{position:relative;padding-left:30px}
+ .ap-item{position:relative;padding:18px 0}
+ /* rail segment + tick per point, so the meter is always aligned to the text */
+ .ap-item::before{content:"";position:absolute;left:-26px;top:0;bottom:0;width:1px;background:rgba(250,247,242,.22);transition:background .7s ease}
+ .ap-item:first-child::before{top:50%}
+ .ap-item:last-child::before{bottom:50%}
+ .ap-item::after{content:"";position:absolute;left:-29px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:#0b2a44;border:1px solid rgba(250,247,242,.45);transform:scale(.85);transition:background .7s ease,border-color .7s ease,box-shadow .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+ .approach-sec .ap-item>div,.approach-sec[data-step] .ap-item>div{opacity:.5;padding-left:0!important;border-left:0!important;transform:none!important;transition:opacity .7s ease}
+ .ap-depth{display:block;margin-bottom:6px;font:400 .62rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#D9BC8C}
+ .approach-sec[data-step="0"] .ap-item:nth-child(1)>div{opacity:1}
+ .approach-sec[data-step="0"] .ap-item:nth-child(1)::after{background:#D9BC8C;border-color:#D9BC8C;box-shadow:0 0 12px rgba(217,188,140,.75);transform:scale(1.15)}
+ .approach-sec[data-step="0"] .ap-item:nth-child(-n+1)::before{background:rgba(217,188,140,.75)}
+ .approach-sec[data-step="1"] .ap-item:nth-child(2)>div{opacity:1}
+ .approach-sec[data-step="1"] .ap-item:nth-child(2)::after{background:#D9BC8C;border-color:#D9BC8C;box-shadow:0 0 12px rgba(217,188,140,.75);transform:scale(1.15)}
+ .approach-sec[data-step="1"] .ap-item:nth-child(-n+2)::before{background:rgba(217,188,140,.75)}
+ .approach-sec[data-step="1"] .ap-item:nth-child(-n+1)::after{border-color:rgba(217,188,140,.8);background:rgba(217,188,140,.35)}
+ .approach-sec[data-step="2"] .ap-item:nth-child(3)>div{opacity:1}
+ .approach-sec[data-step="2"] .ap-item:nth-child(3)::after{background:#D9BC8C;border-color:#D9BC8C;box-shadow:0 0 12px rgba(217,188,140,.75);transform:scale(1.15)}
+ .approach-sec[data-step="2"] .ap-item:nth-child(-n+3)::before{background:rgba(217,188,140,.75)}
+ .approach-sec[data-step="2"] .ap-item:nth-child(-n+2)::after{border-color:rgba(217,188,140,.8);background:rgba(217,188,140,.35)}
+ .approach-sec[data-step="3"] .ap-item:nth-child(4)>div{opacity:1}
+ .approach-sec[data-step="3"] .ap-item:nth-child(4)::after{background:#D9BC8C;border-color:#D9BC8C;box-shadow:0 0 12px rgba(217,188,140,.75);transform:scale(1.15)}
+ .approach-sec[data-step="3"] .ap-item:nth-child(-n+4)::before{background:rgba(217,188,140,.75)}
+ .approach-sec[data-step="3"] .ap-item:nth-child(-n+3)::after{border-color:rgba(217,188,140,.8);background:rgba(217,188,140,.35)}
+ .approach-sec[data-step="4"] .ap-item:nth-child(5)>div{opacity:1}
+ .approach-sec[data-step="4"] .ap-item:nth-child(5)::after{background:#D9BC8C;border-color:#D9BC8C;box-shadow:0 0 12px rgba(217,188,140,.75);transform:scale(1.15)}
+ .approach-sec[data-step="4"] .ap-item:nth-child(-n+5)::before{background:rgba(217,188,140,.75)}
+ .approach-sec[data-step="4"] .ap-item:nth-child(-n+4)::after{border-color:rgba(217,188,140,.8);background:rgba(217,188,140,.35)}
+ .approach-sec[data-step="5"] .ap-item:nth-child(6)>div{opacity:1}
+ .approach-sec[data-step="5"] .ap-item:nth-child(6)::after{background:#D9BC8C;border-color:#D9BC8C;box-shadow:0 0 12px rgba(217,188,140,.75);transform:scale(1.15)}
+ .approach-sec[data-step="5"] .ap-item:nth-child(-n+6)::before{background:rgba(217,188,140,.75)}
+ .approach-sec[data-step="5"] .ap-item:nth-child(-n+5)::after{border-color:rgba(217,188,140,.8);background:rgba(217,188,140,.35)}
+}

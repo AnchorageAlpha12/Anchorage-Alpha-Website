@@ -25,6 +25,19 @@ export function DepthMeter() {
     let raf = 0
     const f = () => {
       raf = 0
+      /* mobile: the meter is drawn inside the list (moves natively with the text);
+         here we only pick the active point — the last one whose centre has passed the reading line.
+         No React state changes, so nothing re-renders while scrolling. */
+      if (window.innerWidth <= 900) {
+        const items = el.querySelectorAll('.ap-item'), line = window.innerHeight * 0.55
+        let a = 0
+        items.forEach((li, i) => { const q = li.getBoundingClientRect(); if (q.top + q.height / 2 <= line) a = i })
+        const v = String(a)
+        if (el.dataset.step !== v) el.dataset.step = v
+        if (geoRef.current) { geoRef.current = null; setGeo(null) }
+        setOn(false)
+        return
+      }
       const r = el.getBoundingClientRect(), vh = window.innerHeight
       const pin = el.querySelector('.ap-pin'), track = el.querySelector('.ap-track')
       const pinned = pin && getComputedStyle(pin).position === 'sticky'
