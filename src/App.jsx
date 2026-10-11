@@ -194,7 +194,7 @@ function Count({ html: h }) {
 }
 
 /* Hero video: two stacked players, the next one smoothly fades in over the last 1.4s of the current one */
-function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
+function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg', sound = false }) {
   const containerRef = useRef(null)
   const A = useRef(null)
   const B = useRef(null)
@@ -231,12 +231,21 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
       try {
         const p = v.play()
         if (p && p.catch) p.catch(() => {})
+        return p
       } catch (e) {}
+    }
+    /* Browsers refuse to autoplay an unmuted clip, so the players start muted and are unmuted once
+       playback is actually under way. Volume is still 0 at that moment, so the fade below brings the
+       sound up without a pop. */
+    const unmuteOnPlay = v => {
+      const p = playSafe(v)
+      if (!sound || !p || !p.then) return
+      p.then(() => { if (v.paused === false) { try { v.muted = false } catch (e) {} } }).catch(() => {})
     }
     /* start (or resume) a clip with its sound rising gently from silence */
     const playSoft = (v, ms = 2600) => {
       setVol(v, 0)
-      playSafe(v)
+      unmuteOnPlay(v)
       fadeTo(v, 1, ms)
     }
     /* stop a clip by letting its sound sink first, then pausing */
@@ -252,7 +261,7 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
 
       // Start playing next video immediately, its sound rising as the old one sinks (equal-length crossfade)
       setVol(nxt, 0)
-      playSafe(nxt)
+      unmuteOnPlay(nxt)
       fadeTo(nxt, 1, F * 1000)
       fadeTo(old, 0, F * 1000)
       nxt.style.zIndex = '2'
@@ -283,7 +292,7 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
       const v = e.target
       if (v === cur) {
         try { v.currentTime = 0 } catch (err) {}
-        playSafe(v)
+        unmuteOnPlay(v)
       }
     }
 
@@ -323,12 +332,24 @@ function LoopVideo({ src = '/video/hero.mp4', poster = '/video/poster.jpg' }) {
     }
     document.addEventListener('visibilitychange', onVis)
 
+    /* A browser that refuses to autoplay unmuted will pause the clip the moment we unmute it.
+       The first real interaction settles the question, so take the opportunity to start the
+       sound then, and stay out of the way once it has taken. */
+    const wake = () => {
+      if (!seen || document.hidden || !cur) return
+      if (cur.muted) { try { cur.muted = false } catch (e) {} }
+      if (cur.paused) playSoft(cur, 1600)
+    }
+    const GESTURES = ['pointerdown', 'keydown', 'touchstart', 'wheel', 'scroll']
+    if (sound) GESTURES.forEach(e => window.addEventListener(e, wake, { once: true, passive: true }))
+
     return () => {
       clearInterval(safetyCheck)
       clearTimeout(timer)
       fades.forEach(id => cancelAnimationFrame(id))
       io.disconnect()
       document.removeEventListener('visibilitychange', onVis)
+      GESTURES.forEach(e => window.removeEventListener(e, wake))
       a.removeEventListener('timeupdate', onTimeUpdate)
       b.removeEventListener('timeupdate', onTimeUpdate)
       a.removeEventListener('ended', onEnded)
@@ -461,7 +482,7 @@ const Nav = memo(function Nav({ active, solid }) {
 
 const Hero = memo(() => (
   <section id="top" className="hero">
-    <LoopVideo /><div className="scrim" />
+    <LoopVideo sound /><div className="scrim" />
     <div className="hero-in">
       <img className="hero-logo a11y-keep" src={U('/img/logo-white.png')} alt="Anchorage Alpha" />
       <p className="hero-line">Anchored in Insight.<br/>Steered by Purpose.</p>
