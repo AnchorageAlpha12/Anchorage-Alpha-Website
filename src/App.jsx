@@ -25,14 +25,31 @@ const pauseScroll = (pause) => {
   }
 }
 
+const NAV_H = 68
+/* where each nav item should land: the section's content, clear of the fixed header */
+const targetOf = (id) => {
+  if (id === 'top') return 0
+  const el = document.getElementById(id)
+  if (!el) return 0
+  const y = el.getBoundingClientRect().top + window.scrollY
+  if (id === 'approach') {
+    const track = el.querySelector('.ap-track'), pin = el.querySelector('.ap-pin')
+    if (pin && track && getComputedStyle(pin).position === 'sticky') return y + (parseFloat(getComputedStyle(track).paddingTop) || 0)
+    const head = el.querySelector('.ap-head')
+    if (head) return head.getBoundingClientRect().top + window.scrollY - NAV_H - 28
+  }
+  return Math.max(0, y - NAV_H)
+}
+
 const goTo = (id) => {
+  const to = targetOf(id)
   if (lenis) {
-    lenis.scrollTo(id === 'top' ? 0 : '#' + id, {
+    lenis.scrollTo(to, {
       duration: window.paused ? 0 : 1.6,
       easing: t => 1 - Math.pow(1 - t, 4)
     })
   } else {
-    document.getElementById(id)?.scrollIntoView({ behavior: window.paused ? 'auto' : 'smooth' })
+    window.scrollTo({ top: to, behavior: window.paused ? 'auto' : 'smooth' })
   }
 }
 
@@ -975,18 +992,21 @@ export default function App() {
     lenis.on('scroll', onScroll)
     onScroll()
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          setActive(e.target.id)
-        }
-      })
-    }, { rootMargin: '-45% 0px -50% 0px' })
-
-    NAV.forEach(([id]) => {
-      const el = document.getElementById(id)
-      if (el) io.observe(el)
-    })
+    /* active nav item: the last section whose top has passed the reading line */
+    let lastActive = 'top'
+    const pickActive = () => {
+      const line = window.innerHeight * 0.45
+      let cur = 'top'
+      for (const [id] of NAV) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= line) cur = id
+      }
+      if (window.scrollY < 4) cur = 'top'
+      if (cur !== lastActive) { lastActive = cur; setActive(cur) }
+    }
+    lenis.on('scroll', pickActive)
+    window.addEventListener('resize', pickActive, { passive: true })
+    pickActive()
 
     return () => {
       if (raf) cancelAnimationFrame(raf)
@@ -994,7 +1014,7 @@ export default function App() {
       lenis.destroy()
       window.__lenis = null
       lenis = null
-      io.disconnect()
+      window.removeEventListener('resize', pickActive)
     }
   }, [])
 

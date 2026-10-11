@@ -29,26 +29,34 @@ export function DepthMeter() {
       const pin = el.querySelector('.ap-pin'), track = el.querySelector('.ap-track')
       const pinned = pin && getComputedStyle(pin).position === 'sticky'
       const pr = pin ? pin.getBoundingClientRect() : r
-      const vis = pr.top < vh * 0.12 && pr.bottom > vh * 0.7
+      let vis = pr.top < vh * 0.12 && pr.bottom > vh * 0.7
       let p = 0
       if (pinned && track) {
         const cs = getComputedStyle(track), t = parseFloat(cs.paddingTop) || 0, b = parseFloat(cs.paddingBottom) || 0
         const tr = track.getBoundingClientRect()
         p = Math.min(0.999, Math.max(0, (-(tr.top + t)) / Math.max(1, tr.height - t - b - vh)))
       }
-      const s = Math.min(5, Math.floor(p * 6))
-      el.dataset.step = s
+      let s = Math.min(5, Math.floor(p * 6))
       const pv = pinned ? Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh))) : 0
       el.style.setProperty('--ap', pv.toFixed(4))
       /* align the gauge to the six points: first tick on the centre of point 1, last on the centre of point 6 */
-      const items = pinned && window.innerWidth > 900 ? el.querySelectorAll('.ap-item') : []
-      if (items.length === STOPS.length) {
+      const items = el.querySelectorAll('.ap-item')
+      if (items.length === STOPS.length && (pinned || window.innerWidth <= 900)) {
         const c = Array.from(items, li => { const q = li.getBoundingClientRect(); return q.top + q.height / 2 })
+        if (!pinned) {
+          /* mobile: the list scrolls, so the gauge travels with it and the point nearest the reading line is active */
+          const line = vh * 0.5
+          let best = 0
+          c.forEach((y, i) => { if (Math.abs(y - line) < Math.abs(c[best] - line)) best = i })
+          s = best
+          vis = c[0] < vh * 0.85 && c[c.length - 1] > vh * 0.15
+        }
         const top = c[0], h = Math.max(1, c[c.length - 1] - c[0])
         const g = { top: Math.round(top), h: Math.round(h), pos: c.map(y => ((y - top) / h) * 100) }
         const o = geoRef.current
         if (!o || Math.abs(o.top - g.top) > 0.5 || Math.abs(o.h - g.h) > 0.5) { geoRef.current = g; setGeo(g) }
       } else if (geoRef.current) { geoRef.current = null; setGeo(null) }
+      el.dataset.step = s
       setOn(vis); setStep(s)
     }
     const h = () => { if (!raf) raf = requestAnimationFrame(f) }

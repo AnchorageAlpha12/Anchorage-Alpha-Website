@@ -1,673 +1,669 @@
 {
- "about": {
-  "h": "Provider of growth capital.",
-  "p": [
-   "Anchorage Capital is a SEBI-registered Category II Alternative Investment Fund, founded by Rohit Kothari and in operation since 2022. It is managed by Anchorage Alpha Investments Advisor Private Limited.",
-   "The fund invests across growth companies in India, largely in the unlisted private space and selectively in listed companies. The theme underlying every investment is the same: businesses that are unique in their space, with a decisive moat, backed by exceptional founders."
+  "about": {
+    "h": "Provider of growth capital.",
+    "p": [
+      "Anchorage Capital is a SEBI-registered Category II Alternative Investment Fund, founded by Rohit Kothari and in operation since 2022. It is managed by Anchorage Alpha Investments Advisor Private Limited.",
+      "The fund invests across growth companies in India, largely in the unlisted private space and selectively in listed companies. The theme underlying every investment is the same: businesses that are unique in their space, with a decisive moat, backed by exceptional founders."
+    ],
+    "img": "",
+    "schemes": [
+      {
+        "l": "Anchorage Capital",
+        "n": "Scheme I",
+        "d": "Inception May 2022"
+      },
+      {
+        "l": "Anchorage Capital",
+        "n": "Scheme II",
+        "d": "Inception September 2023"
+      },
+      {
+        "l": "Anchorage Capital",
+        "n": "Scheme III",
+        "d": "Inception October 2025"
+      },
+      {
+        "l": "Total AUM",
+        "n": "~$389mn * ₹3,736 Cr",
+        "d": "Across schemes"
+      }
+    ],
+    "note": "<sup>*</sup> AUM refers to the aggregate of uncalled capital commitments and the net asset value of the investments across the schemes of Anchorage Capital. USD/INR 96.1025 (Sep 2026)."
+  },
+  "legacy": {
+    "h": "Twenty-five years before the first scheme.",
+    "sub": "Independent thinking. Conviction through cycles.",
+    "p": [
+      "Anchorage Capital is built upon the investing heritage of the Kothari family office, led by Rohit Kothari. For more than 25 years, the family has invested its own capital across Indian businesses spanning small, mid and large-cap companies, identifying opportunities early, taking a long-term view and holding through cycles.",
+      "This heritage of experience, deep relationships and disciplined capital allocation continues to shape Anchorage Capital today. The sponsor group commits significant capital alongside investors in every scheme.",
+      "Rohit Kothari brings more than two decades of investing experience across Indian and global markets, with a track record spanning multiple market cycles. His investment approach centres on identifying enduring businesses, backing high-quality entrepreneurs and compounding value over the long term.",
+      "With a strong history of entrepreneurship and operational excellence, he built and scaled Aroni Chemicals and Gwalior Chemicals into the world's second-largest producers of aluminium chloride and chlorotoluenes, acquired by Atofina of France in 2004 and LANXESS of Germany in 2008. In 2008, he founded Antique Stock Broking Limited, a leading mid-market brokerage and investment bank.",
+      "Today, he serves as Founder & Executive Chairman of Anchorage Alpha, bringing together the perspective of an investor and entrepreneur."
+    ],
+    "stats": [
+      {
+        "b": "25+",
+        "s": "Years of value-driven investing",
+        "e": ""
+      },
+      {
+        "b": "$1bn+<sup class=\"ast\">*</sup>",
+        "s": "Assets under management",
+        "e": ""
+      },
+      {
+        "b": "290+",
+        "s": "Company investments",
+        "e": "250 public · 40 private"
+      }
+    ],
+    "img": "/img/40e8bcb97d.jpg"
+  },
+  "founder": {
+    "name": "Rohit Kothari",
+    "role": "Founder & Executive Chairman",
+    "p": [
+      "Rohit Kothari brings more than two decades of investing experience across Indian and global markets, with a track record spanning multiple market cycles. His investment approach centres on identifying enduring businesses, backing high-quality entrepreneurs and compounding value over the long term.",
+      "With a strong history of entrepreneurship and operational excellence, he built and scaled Aroni Chemicals and Gwalior Chemicals into the world's second-largest producers of aluminium chloride and chlorotoluenes, acquired by Atofina of France in 2004 and LANXESS of Germany in 2008. In 2008, he founded Antique Stock Broking Limited, a leading mid-market brokerage and investment bank.",
+      "Today, he serves as Founder & Executive Chairman of Anchorage Alpha, bringing together the perspective of an investor and entrepreneur."
+    ],
+    "img": "/img/founder-rohit.webp",
+    "chips": [
+      "Chartered Accountant",
+      "MBA, Babson College"
+    ]
+  },
+  "team": {
+    "note": "* The Anchorage team/firm includes individuals employed either by Anchorage Alpha Investments Advisor Private Limited or by other associated entities of the sponsor group.",
+    "members": [
+      {
+        "id": "p-mithun-soni",
+        "name": "Mithun Soni",
+        "role": "Chief Investment Officer",
+        "img": "/img/team-dbddb5ebef.webp",
+        "facts": [
+          [
+            "Experience",
+            "20+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2010"
+          ],
+          [
+            "Education",
+            "Master's, Finance & Marketing (University of Scranton, PA, USA)"
+          ],
+          [
+            "Previously",
+            "Americorp Capital Pvt Ltd"
+          ]
+        ]
+      },
+      {
+        "id": "p-hetal-khalpada",
+        "name": "Hetal Khalpada",
+        "role": "Finance Director",
+        "img": "/img/team-73907cd79d.webp",
+        "facts": [
+          [
+            "Experience",
+            "20+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2005"
+          ],
+          [
+            "Education",
+            "Chartered Accountant"
+          ]
+        ]
+      },
+      {
+        "id": "p-nirav-shah",
+        "name": "Nirav Shah",
+        "role": "Energy, Materials & Infrastructure",
+        "img": "/img/team-c4bc3d3b73.webp",
+        "facts": [
+          [
+            "Experience",
+            "20+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2014"
+          ],
+          [
+            "Education",
+            "CFA (ICFAI), B.Com"
+          ]
+        ]
+      },
+      {
+        "id": "p-rajiv-pathak",
+        "name": "Rajiv Pathak",
+        "role": "Banking & Financial Services",
+        "img": "/img/team-0a6040f62a.webp",
+        "facts": [
+          [
+            "Experience",
+            "20+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2015"
+          ],
+          [
+            "Education",
+            "Chartered Accountant"
+          ]
+        ]
+      },
+      {
+        "id": "p-sanket-baheti",
+        "name": "Sanket Baheti",
+        "role": "Consumer Services & Platforms",
+        "img": "/img/team-1b279aad13.webp",
+        "facts": [
+          [
+            "Experience",
+            "10+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2015"
+          ],
+          [
+            "Education",
+            "Master's, Finance"
+          ]
+        ]
+      },
+      {
+        "id": "p-nirav-vasa",
+        "name": "Nirav Vasa",
+        "role": "High-Tech Engineering & Manufacturing Platforms",
+        "img": "/img/team-72c86ae4ac.webp",
+        "facts": [
+          [
+            "Experience",
+            "15+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2025"
+          ],
+          [
+            "Education",
+            "Master's, Capital Markets"
+          ]
+        ]
+      },
+      {
+        "id": "p-karan-shah",
+        "name": "Karan Shah",
+        "role": "Healthcare & Specialty Chemicals",
+        "img": "/img/team-4eac93536f.webp",
+        "facts": [
+          [
+            "Experience",
+            "9+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2021"
+          ],
+          [
+            "Education",
+            "Master's, Finance & Capital Markets"
+          ]
+        ]
+      },
+      {
+        "id": "p-apratim-raychaudhuri",
+        "name": "Apratim Raychaudhuri",
+        "role": "Digital Infrastructure & New-Age Technology",
+        "img": "/img/team-468f99c8ca.webp",
+        "facts": [
+          [
+            "Experience",
+            "5+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2026"
+          ],
+          [
+            "Education",
+            "MBA (IIM Bangalore), B.Tech. (VIT, Vellore)"
+          ],
+          [
+            "Previously",
+            "Kotak Private, Verity Knowledge Solutions"
+          ]
+        ]
+      },
+      {
+        "id": "p-deepanshu-jain",
+        "name": "Deepanshu Jain",
+        "role": "Defence & New-Age Technology",
+        "img": "/img/team-79fc13ab2d.webp",
+        "facts": [
+          [
+            "Experience",
+            "5+ years"
+          ],
+          [
+            "With the firm",
+            "Since 2026"
+          ],
+          [
+            "Education",
+            "MBA, BTech"
+          ],
+          [
+            "Previously",
+            "Barclays, Infosys"
+          ]
+        ]
+      },
+      {
+        "id": "p-kapil-bhagwat",
+        "name": "Kapil Bhagwat",
+        "role": "Data Operations Lead",
+        "img": "/img/team-16d4d94ee2.webp",
+        "facts": [
+          [
+            "Experience",
+            "19 years"
+          ],
+          [
+            "With the firm",
+            "Since 2017"
+          ],
+          [
+            "Education",
+            "B.Com, MBA"
+          ],
+          [
+            "Previously",
+            "Citigroup Global Services, TCS"
+          ]
+        ]
+      }
+    ]
+  },
+  "approach": [
+    {
+      "h": "Growth is essential",
+      "p": "A company in a high-growth phase, where capital helps it grow faster. What matters is growth compounded over years, not one good year."
+    },
+    {
+      "h": "Moats create value",
+      "p": "Every business has to be unique in its space, with a moat strong enough to protect that compounding."
+    },
+    {
+      "h": "Management matters",
+      "p": "Exceptional leadership and committed founders. On this, there is no compromise."
+    },
+    {
+      "h": "Crowds kill alpha",
+      "p": "We would rather originate and lead than follow a crowded round."
+    },
+    {
+      "h": "Returns come first",
+      "p": "Capital has to earn a high return on equity, and the entry value has to leave room for it. In the end, cash flow is king."
+    },
+    {
+      "h": "Familiarity reduces risk",
+      "p": "We know the sector and the company well, long before we commit."
+    }
   ],
-  "img": "",
-  "schemes": [
-   {
-    "l": "Anchorage Capital",
-    "n": "Scheme I",
-    "d": "Inception May 2022"
-   },
-   {
-    "l": "Anchorage Capital",
-    "n": "Scheme II",
-    "d": "Inception September 2023"
-   },
-   {
-    "l": "Anchorage Capital",
-    "n": "Scheme III",
-    "d": "Inception October 2025"
-   },
-   {
-    "l": "Total AUM",
-    "n": "~$389mn * ₹3,736 Cr",
-    "d": "Across schemes"
-   }
+  "feat": [
+    {
+      "id": "co-nxtra",
+      "logo": "/img/98ccb19196.webp",
+      "name": "Nxtra",
+      "tag": "Best-in-Class Execution at Scale in India’s AI Infrastructure Build-Out.",
+      "url": "https://www.nxtra.in",
+      "pts": [
+        "Bharti Airtel’s data centre platform and India’s largest data centre network, with 14 core and 120+ edge facilities nationwide, combining scaled infrastructure with Airtel’s broader ecosystem advantage.",
+        "Scaling from ~300 MW towards 1 GW of AI-ready capacity, led by a high-calibre management team and positioned at the convergence of AI, cloud adoption and data localisation.",
+        "Anchorage invested behind Nxtra’s proven execution and scale, with Alpha Wave Global and Carlyle among the other co-investors in Nxtra’s ~US$1 billion fundraise."
+      ],
+      "q": "Anchorage brings a valuable global perspective on AI, compute and digital infrastructure, coupled with a strong understanding of how these themes are evolving in India. Their perspective adds real value as we build for the next generation of digital infrastructure.",
+      "who": "Gopal Vittal",
+      "role": "Executive Vice Chairman, Bharti Airtel"
+    },
+    {
+      "id": "co-meril",
+      "logo": "/img/7004b0e662.webp",
+      "name": "Meril Life Sciences",
+      "tag": "Ahead of India’s MedTech Inflection.",
+      "url": "https://www.merillife.com",
+      "pts": [
+        "India’s largest medical devices company and a global innovator, with integrated R&D and manufacturing across cardiovascular, orthopaedics, surgical robotics and other advanced medical device categories, including pioneering indigenous technologies such as coronary stents and the Myval TAVR platform.",
+        "Anchorage identified MedTech early as a secular growth opportunity, underpinned by strong healthcare tailwinds and an inflection akin to India’s IT sector, backing Meril and its founders at an early stage of their global growth journey.",
+        "Among Meril’s earliest institutional backers, Anchorage invested alongside Warburg Pincus in 2022 at a ~US$1.8 billion valuation. In 2025 ADIA invested at a ~US$6.6 billion valuation."
+      ],
+      "q": "Our relationship with Rohit and Anchorage spans over 25 years, grounded in trust and a shared long-term vision. They understood what we were building long before its scale was evident, and have remained a trusted partner through our journey.",
+      "who": "Shahid Bilakhia",
+      "role": "Co-founder & Chairman, Meril Life Sciences Group"
+    },
+    {
+      "id": "co-neysa",
+      "logo": "/img/56a1a016f7.webp",
+      "name": "Neysa Networks",
+      "tag": "Early Access to India’s AI Compute Layer.",
+      "url": "https://neysa.ai",
+      "pts": [
+        "Founded by Sharad Sanghi, a pioneer of India’s commercial data centre industry, bringing deep pedigree in building and scaling digital infrastructure.",
+        "Positioned at the heart of India’s AI build-out, providing sovereign, production-grade AI infrastructure for mission-critical enterprise and government workloads.",
+        "One of India’s select AI cloud platforms working with both NVIDIA and AMD, with the capability to deploy and operate GPU infrastructure at scale.",
+        "Anchorage identified and backed Neysa at a formative stage, with the platform subsequently attracting a ~US$1.2 billion Blackstone-led capital commitment to accelerate AI infrastructure deployment across India."
+      ],
+      "q": "Anchorage saw the scale of the opportunity in Neysa before we fully appreciated it. Their conviction in what the business could become was striking at the time, and the journey since has demonstrated the foresight behind that view.",
+      "who": "Sharad Sanghi",
+      "role": "Founder & CEO, Neysa Networks"
+    },
+    {
+      "id": "co-precision",
+      "logo": "/img/93cde5b01d.webp",
+      "name": "Precision Wires",
+      "tag": "Growth Capital Behind an Electrification Leader.",
+      "url": "https://precisionwires.in",
+      "pts": [
+        "One of Asia’s leading winding wire manufacturers, with a track record spanning over three decades and exposure across Power, EVs, Renewables and Data Centres.",
+        "Anchorage invested at a key inflection point in India’s electrification cycle, drawing on a deep familiarity with the sector.",
+        "Growth capital deployed across multiple rounds enabled a record capex programme, accelerating capacity expansion and driving a step-change in earnings growth."
+      ],
+      "q": "Our relationship with the Kotharis goes back three decades, well beyond investment. They have backed us consistently through successive phases of growth and capital raising, the kind of steadfast partnership that is rare to find.",
+      "who": "Milan Mehta",
+      "role": "Chairman & Managing Director, Precision Wires"
+    },
+    {
+      "id": "co-ace",
+      "logo": "/img/99d9c8dd14.webp",
+      "name": "ACE Insurance Brokers",
+      "tag": "Backing a High-Return Specialist in Complex Risk.",
+      "url": "https://aceinsurance.com",
+      "pts": [
+        "Leading Indian insurance broking and risk advisory platform, with over two decades of experience and an integrated offering spanning corporate insurance, risk management and reinsurance.",
+        "A capital-light, exceptionally high-margin model with superior ROCE, where specialist domain knowledge, complex risk structuring and deep client relationships create a durable competitive moat.",
+        "Anchorage invested in ACE for its specialist franchise and exceptional economics. Blackstone holds a majority stake in the business."
+      ],
+      "q": "Anchorage was our first investment partner and understood the quality and potential of our business early. They have been a thoughtful partner through our evolution, supporting us as we scaled and entered our next phase of institutional growth.",
+      "who": "Raj Ajmera",
+      "role": "Founder, ACE Insurance Brokers"
+    },
+    {
+      "id": "co-enviro",
+      "logo": "/img/990ea266ac.webp",
+      "name": "Enviro Infra Engineers",
+      "tag": "From Nascent Player to Water Infrastructure Leader.",
+      "url": "https://www.eiel.in",
+      "pts": [
+        "Integrated water infrastructure player spanning sewage, industrial wastewater and recycling, with in-house capabilities across process design and execution; expanding into Desalination and Zero Liquid Discharge (ZLD) for its next phase of growth.",
+        "Positioned in a ₹20 trillion (~US$240 billion) decade-long opportunity, as water becomes an increasingly critical resource across industries, driven by infrastructure investment, industrial demand and tightening wastewater norms.",
+        "Anchorage identified the water infrastructure opportunity early, backing Enviro at a nascent stage, well ahead of broader market recognition, and supporting its evolution from a small player into a scaled water infrastructure platform."
+      ],
+      "q": "Anchorage recognised the potential of water resource management well before most, and backed us at a very early stage in our journey. The conviction with which they put in capital gave us the confidence to pursue a much larger opportunity and accelerate our growth.",
+      "who": "Manish Jain",
+      "role": "Managing Director, Enviro Infra Engineers"
+    },
+    {
+      "id": "co-thriveni",
+      "logo": "/img/bd8b239384.svg",
+      "name": "Thriveni Earthmovers",
+      "tag": "Backing a Formidable Operator in Critical Minerals.",
+      "url": "https://thriveni.com",
+      "pts": [
+        "Built by Mr. B. Prabhakaran, one of the most dynamic and respected founders in the resources sector, Thriveni has grown into an integrated resources platform and is today part of the broader Lloyds Metals & Energy ecosystem.",
+        "Positioned across resources critical to industrial growth and the AI economy, spanning iron ore, coal, copper and cobalt, with projects across India and DR Congo and an upcoming project in Papua New Guinea.",
+        "Proven turnaround specialist, with a track record of bringing stalled mines to life and rapidly scaling production: a distinctive execution edge in a complex sector.",
+        "Anchorage backed Thriveni for its exceptional execution, strong return ratios and significant growth optionality, with several opportunities identified at investment already translating into live projects."
+      ],
+      "q": "Anchorage brings a depth of understanding of the resources sector that is unusual for an investor. Their ability to understand the operating realities of our business and engage with us from that perspective makes them a highly valued partner.",
+      "who": "B. Prabhakaran",
+      "role": "Founder & Managing Director, Thriveni Earthmovers"
+    },
+    {
+      "id": "co-qicap",
+      "logo": "/img/2f01274676.webp",
+      "name": "Qi Cap",
+      "tag": "Ahead of the Curve on AI-Native Asset Management.",
+      "url": "https://qicap.ai",
+      "pts": [
+        "Founded by Amit Rathi, bringing multi-decade experience across capital and commodity markets and deep expertise in systematic investing.",
+        "Global deeptech platform built around proprietary AI/ML alpha engines and self-learning strategies, combining advanced data science with institutional-scale, low-latency execution; processing ~500 million orders daily with a 100+ member team of IIT-trained engineers and data scientists.",
+        "Anchorage backed Qi Cap early, recognising the potential for AI-native investing to disrupt traditional asset management well before the theme entered the mainstream."
+      ],
+      "q": "Anchorage is an exceptionally sharp investment team with a deep understanding of capital markets and technology. They understood the potential of our AI-led approach early, well before the opportunity became widely recognised.",
+      "who": "Amit Rathi",
+      "role": "Co-founder & CEO, Qi Cap"
+    }
   ],
-  "note": "<sup>*</sup> AUM refers to the aggregate of uncalled capital commitments and the net asset value of the investments across the schemes of Anchorage Capital. USD/INR 96.1025 (Sep 2026)."
- },
- "legacy": {
-  "h": "Twenty-five years before the first scheme.",
-  "sub": "Independent thinking. Conviction through cycles.",
-  "p": [
-   "Anchorage Capital is built upon the investing heritage of the Kothari family office, led by Rohit Kothari. For more than 25 years, the family has invested its own capital across Indian businesses spanning small, mid and large-cap companies, identifying opportunities early, taking a long-term view and holding through cycles.",
-   "This heritage of experience, deep relationships and disciplined capital allocation continues to shape Anchorage Capital today. The sponsor group commits significant capital alongside investors in every scheme.",
-   "Rohit Kothari brings more than two decades of investing experience across Indian and global markets, with a track record spanning multiple market cycles. His investment approach centres on identifying enduring businesses, backing high-quality entrepreneurs and compounding value over the long term.",
-   "With a strong history of entrepreneurship and operational excellence, he built and scaled Aroni Chemicals and Gwalior Chemicals into the world's second-largest producers of aluminium chloride and chlorotoluenes, acquired by Atofina of France in 2004 and LANXESS of Germany in 2008. In 2008, he founded Antique Stock Broking Limited, a leading mid-market brokerage and investment bank.",
-   "Today, he serves as Founder & Executive Chairman of Anchorage Alpha, bringing together the perspective of an investor and entrepreneur."
+  "grid": [
+    {
+      "logo": "/img/98ccb19196.webp",
+      "name": "Nxtra Data",
+      "d": "India’s largest data centre network."
+    },
+    {
+      "logo": "/img/7004b0e662.webp",
+      "name": "Meril Life Sciences",
+      "d": "India’s largest home-grown medical device maker."
+    },
+    {
+      "logo": "/img/56a1a016f7.webp",
+      "name": "Neysa Networks",
+      "d": "Among India’s Top 2 AI Neocloud Platforms."
+    },
+    {
+      "logo": "/img/93cde5b01d.webp",
+      "name": "Precision Wires",
+      "d": "One of Asia’s leading winding wire manufacturers."
+    },
+    {
+      "logo": "/img/99d9c8dd14.webp",
+      "name": "ACE Insurance Brokers",
+      "d": "A leading corporate insurance and reinsurance intermediary."
+    },
+    {
+      "logo": "/img/990ea266ac.webp",
+      "name": "Enviro Infra Engineers",
+      "d": "A leading water and wastewater treatment EPC company."
+    },
+    {
+      "logo": "/img/bd8b239384.svg",
+      "name": "Thriveni Earthmovers",
+      "d": "One of India’s largest private mineral value-chain powerhouses."
+    },
+    {
+      "logo": "/img/2f01274676.webp",
+      "name": "Qi Cap",
+      "d": "One of India’s premier AI driven quantitative research trading platforms."
+    },
+    {
+      "logo": "/img/9f1e744a5e.svg",
+      "name": "Inox Clean Energy",
+      "d": "One of India’s fastest-growing integrated clean energy platforms."
+    },
+    {
+      "logo": "/img/9a0a056f99.webp",
+      "name": "Caliber Mining & Logistics",
+      "d": "One of India’s leading mineral resource and logistics platforms."
+    },
+    {
+      "logo": "/img/9c5cddae64.svg",
+      "name": "GREW Solar",
+      "d": "One of India’s leading integrated solar equipment manufacturers."
+    },
+    {
+      "logo": "/img/4172562d7c.webp",
+      "name": "Qucev",
+      "d": "One of India’s most promising electric logistics companies."
+    }
   ],
-  "stats": [
-   {
-    "b": "25+",
-    "s": "Years of value-driven investing",
-    "e": ""
-   },
-   {
-    "b": "$1bn+<sup class=\"ast\">*</sup>",
-    "s": "Assets under management",
-    "e": ""
-   },
-   {
-    "b": "290+",
-    "s": "Company investments",
-    "e": "250 public · 40 private"
-   }
+  "faq": [
+    {
+      "q": "What is Anchorage Capital?",
+      "a": "Anchorage Capital is a SEBI-registered Category II Alternative Investment Fund (registration IN/AIF2/21-22/1003), founded by Rohit Kothari and in operation since 2022. It invests across growth companies in India, largely in the unlisted private space and selectively in listed companies."
+    },
+    {
+      "q": "Who manages Anchorage Capital?",
+      "a": "The fund is managed by Anchorage Alpha Investments Advisor Private Limited. The sponsor is Rohit Kothari, the trustee is Orbis Trusteeship Services Private Limited and the compliance officer is Bhaven Jain."
+    },
+    {
+      "q": "What kind of companies does Anchorage invest in?",
+      "a": "Anchorage is a provider of growth capital. Every investment shares one theme: businesses that are unique in their space, with a decisive moat, backed by exceptional founders. Its approach: growth is essential, moats create value, management matters, crowds kill alpha, returns come first and familiarity reduces risk."
+    },
+    {
+      "q": "Which companies has Anchorage invested in?",
+      "a": "Key investments include Nxtra Data, Meril Life Sciences, Neysa Networks, Precision Wires, ACE Insurance Brokers, Enviro Infra Engineers, Thriveni Earthmovers, Qi Cap, Inox Clean Energy, Caliber Mining &amp; Logistics, GREW Solar and Qucev, among others."
+    },
+    {
+      "q": "How many schemes does Anchorage Capital have?",
+      "a": "Anchorage Capital has three schemes: Scheme I (inception May 2022), Scheme II (inception September 2023) and Scheme III (inception October 2025). Across its schemes the fund manages a collective ~US$389mn, ₹3,736 crore."
+    },
+    {
+      "q": "Who is the founder of Anchorage?",
+      "a": "Rohit Kothari is the Founder and Executive Chairman of Anchorage Alpha. A Chartered Accountant with an MBA from Babson College, he built and scaled Aroni Chemicals and Gwalior Chemicals, and founded Antique Stock Broking Limited in 2008. Anchorage began as the Kothari family office, which has more than 25 years of value-driven investing behind it."
+    },
+    {
+      "q": "Can anyone invest in Anchorage Capital?",
+      "a": "No. Units of Anchorage Capital are offered solely by private placement to eligible investors pursuant to a confidential placement memorandum. This website is for information only and is not an offer or solicitation. Eligible investors can write to <a href=\"mailto:investor@anchoragealpha.com\">investor@anchoragealpha.com</a>."
+    },
+    {
+      "q": "Where is Anchorage Alpha located?",
+      "a": "Anchorage Alpha is at 209/210, 2nd Floor, Arcadia Building, NCPA Marg, Nariman Point, Mumbai, Maharashtra 400021. Telephone: 022-40198600."
+    },
+    {
+      "q": "How can an investor raise a grievance?",
+      "a": "Investors can raise a grievance through SEBI SCORES at <a href=\"https://scores.sebi.gov.in/\" rel=\"noopener\" target=\"_blank\">https://scores.sebi.gov.in/</a> or through the Online Dispute Resolution Portal at <a href=\"https://smartodr.in/\" rel=\"noopener\" target=\"_blank\">https://smartodr.in/</a>."
+    }
   ],
-  "img": "/img/40e8bcb97d.jpg"
- },
- "founder": {
-  "name": "Rohit Kothari",
-  "role": "Founder & Executive Chairman",
-  "p": [
-   "Rohit Kothari brings more than two decades of investing experience across Indian and global markets, with a track record spanning multiple market cycles. His investment approach centres on identifying enduring businesses, backing high-quality entrepreneurs and compounding value over the long term.",
-   "With a strong history of entrepreneurship and operational excellence, he built and scaled Aroni Chemicals and Gwalior Chemicals into the world's second-largest producers of aluminium chloride and chlorotoluenes, acquired by Atofina of France in 2004 and LANXESS of Germany in 2008. In 2008, he founded Antique Stock Broking Limited, a leading mid-market brokerage and investment bank.",
-   "Today, he serves as Founder & Executive Chairman of Anchorage Alpha, bringing together the perspective of an investor and entrepreneur."
+  "pol": [
+    {
+      "t": "Investor Grievance Redressal Policy",
+      "d": "How investor queries and complaints are received, escalated and resolved, with response timelines at each level and access to SEBI SCORES.",
+      "meta": "PDF · 11 pages · 1.5 MB",
+      "href": "/policies/0adf660ead.pdf"
+    },
+    {
+      "t": "Stewardship Code",
+      "d": "Our principles for monitoring, engaging with and voting at investee companies, in line with SEBI's stewardship framework.",
+      "meta": "PDF · 10 pages · 1.0 MB",
+      "href": "/policies/f973bf95f4.pdf"
+    },
+    {
+      "t": "Conflict of Interest Policy",
+      "d": "How potential conflicts between investors, the investment manager, the sponsor and service providers are identified, managed and disclosed.",
+      "meta": "PDF · 11 pages · 791 KB",
+      "href": "/policies/91285fb570.pdf"
+    },
+    {
+      "t": "Risk Management Policy",
+      "d": "The framework used to identify, assess, mitigate and monitor risks across the fund, its schemes and its investments.",
+      "meta": "PDF · 14 pages · 822 KB",
+      "href": "/policies/941d3d8dbc.pdf"
+    },
+    {
+      "t": "AML, CFT and KYC Policy",
+      "d": "Anti-money laundering, counter-terrorist financing and know-your-customer procedures applied to every investor in the fund.",
+      "meta": "PDF · 37 pages · 4.7 MB",
+      "href": "/policies/4f935f0891.pdf"
+    }
   ],
-  "img": "/img/founder-rohit.webp",
-  "chips": [
-   "Chartered Accountant",
-   "MBA, Babson College"
+  "defs": {
+    "note": "Terms used on this website and in fund documents. These are summaries for convenience; the scheme documents and applicable regulations prevail.",
+    "items": [
+      [
+        "Alternative Investment Fund (AIF)",
+        "A privately pooled investment vehicle established in India that collects funds from investors for investing in accordance with a defined investment policy, and is registered with SEBI under the SEBI (Alternative Investment Funds) Regulations, 2012."
+      ],
+      [
+        "Category II AIF",
+        "An AIF that does not fall under Category I or Category III and does not undertake leverage or borrowing other than to meet day-to-day operational requirements, as permitted under the SEBI (AIF) Regulations. Private equity and growth capital funds are typically Category II AIFs."
+      ],
+      [
+        "SEBI",
+        "The Securities and Exchange Board of India, the regulator of India's securities markets and of all Alternative Investment Funds."
+      ],
+      [
+        "Scheme",
+        "A separate investment programme launched under the fund, with its own investors, commitments and terms. Anchorage Capital has three schemes: Scheme I, Scheme II and Scheme III."
+      ],
+      [
+        "Sponsor",
+        "The person who sets up the AIF and makes a continuing interest commitment to it. The sponsor of Anchorage Capital is Rohit Kothari."
+      ],
+      [
+        "Investment Manager",
+        "The entity appointed to manage the investments of the fund and its schemes. For Anchorage Capital this is Anchorage Alpha Investments Advisor Private Limited."
+      ],
+      [
+        "Trustee",
+        "The independent entity that holds the fund's assets in trust for the benefit of investors and oversees the investment manager. For Anchorage Capital this is Orbis Trusteeship Services Private Limited."
+      ],
+      [
+        "Investor / Contributor / Unitholder",
+        "A person or entity that invests in the fund by making a capital commitment under a binding contribution agreement, and holds units of a scheme."
+      ],
+      [
+        "Capital commitment",
+        "The total amount an investor agrees to contribute to a scheme over its life, called in stages as investments are made."
+      ],
+      [
+        "Drawdown",
+        "A request by the investment manager for investors to pay in a portion of their capital commitment, usually to fund an investment or fund expenses."
+      ],
+      [
+        "Net Asset Value (NAV)",
+        "The value of a scheme's investments and other assets, less its liabilities, as determined under the applicable valuation norms."
+      ],
+      [
+        "Private Placement Memorandum (PPM)",
+        "The confidential offer document of a scheme that sets out its strategy, terms, fees, risks and other disclosures. Units of Anchorage Capital are offered only by private placement under a PPM."
+      ],
+      [
+        "KYC",
+        "Know Your Customer: the process of verifying the identity and address of every investor, and of any beneficial owner, before and during the investment relationship."
+      ],
+      [
+        "Beneficial Owner",
+        "The natural person or persons who ultimately own, control or influence an investor, including those who exercise ultimate effective control over it."
+      ],
+      [
+        "Stewardship",
+        "The responsibility of an institutional investor to monitor and engage with the companies it invests in on strategy, performance, risk, capital structure and governance, including by voting."
+      ],
+      [
+        "SEBI SCORES",
+        "SEBI Complaints Redress System, SEBI's online platform where investors can lodge and track complaints against registered intermediaries: https://scores.sebi.gov.in/"
+      ],
+      [
+        "Online Dispute Resolution (ODR)",
+        "The Online Dispute Resolution portal for the Indian securities market, for resolving disputes through online conciliation and arbitration: https://smartodr.in/"
+      ]
+    ]
+  },
+  "legal": [
+    "<strong>Important legal information.</strong> This website is issued by Anchorage Alpha Investments Advisor Private Limited, registered with the Securities and Exchange Board of India as the investment manager of a Category II Alternative Investment Fund, and is provided for information purposes only. Nothing on it constitutes a prospectus, a private placement memorandum, an offer document, or an offer or solicitation to purchase or sell interests in any scheme or investment product, in any jurisdiction where such an offer or solicitation would be unlawful. Units of Anchorage Capital are offered solely by private placement to eligible investors pursuant to a confidential placement memorandum.",
+    "<strong>Past performance is not indicative of future results.</strong> Any returns referred to are gross, before fees, expenses and profit sharing, and are not a representation of any investor's actual or expected return. Investments in the scheme are subject to risks including loss of capital, illiquidity, and market and other risks. Registration or certification by SEBI or any other regulatory authority does not in any way guarantee the performance of the scheme or provide any assurance of returns to investors. Investors must read all scheme-related documents carefully before investing and should seek independent professional advice on suitability in light of their own risk appetite, financial circumstances and goals.",
+    "Investments referred to under Legacy were made by the sponsor and the family office, and not by the Anchorage Capital schemes. Companies named do not constitute a complete list of investments, and transaction details reflect publicly announced information. Rupee amounts are converted to US dollars at an indicative rate and shown for reference only. Third-party names are the property of their respective owners and are shown for identification purposes; their use does not imply any endorsement of Anchorage Alpha, Anchorage Capital or its schemes.",
+    "Nothing on this website constitutes investment, legal, tax or accounting advice, and no claim shall be made against Anchorage Alpha Investments Advisor Private Limited, its affiliates or employees claiming any influence, recommendation or advice in respect of an investment decision."
+  ],
+  "privacy": [
+    "This website is for information only. It has no sign-in, no forms and no advertising, and we do not use cookies or analytics tools to track visitors. The typefaces are loaded from Google Fonts, so your browser may connect to Google's servers when a page loads.",
+    "If you write to us by email, we use the details you send only to respond to you, and we keep them as long as needed for that purpose and as required by law and our regulatory obligations. We do not sell personal information.",
+    "Information collected from investors when they invest is handled under the fund's policies, including the AML, CFT and KYC Policy, and under applicable law.",
+    "For any question about privacy, write to <a href=\"mailto:investor@anchoragealpha.com\">investor@anchoragealpha.com</a>."
+  ],
+  "footer": [
+    "Anchorage Alpha Investments Advisor Private Limited is the investment manager of Anchorage Capital, a SEBI registered Category II Alternative Investment Fund (registration no. IN/AIF2/21-22/1003).",
+    "Units are offered solely by private placement to eligible investors. Nothing on this website is an offer or solicitation. Past performance is not indicative of future results, and investments are subject to risks, including loss of capital. <a class=\"nw\" href=\"#legal\">Read the full legal information.</a>",
+    "© 2026 Anchorage Alpha Investments Advisor Private Limited. All rights reserved."
   ]
- },
- "team": {
-  "note": "* The Anchorage team/firm includes individuals employed either by Anchorage Alpha Investments Advisor Private Limited or by other associated entities of the sponsor group.",
-  "members": [
-   {
-    "id": "p-mithun-soni",
-    "name": "Mithun Soni",
-    "role": "Chief Investment Officer",
-    "img": "/img/team-dbddb5ebef.webp",
-    "facts": [
-     [
-      "Experience",
-      "20+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2010"
-     ],
-     [
-      "Education",
-      "Master's, Finance & Marketing (University of Scranton, PA, USA)"
-     ],
-     [
-      "Previously",
-      "Americorp Capital Pvt Ltd"
-     ]
-    ]
-   },
-   {
-    "id": "p-hetal-khalpada",
-    "name": "Hetal Khalpada",
-    "role": "Finance Director",
-    "img": "/img/team-73907cd79d.webp",
-    "facts": [
-     [
-      "Experience",
-      "20+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2005"
-     ],
-     [
-      "Education",
-      "Chartered Accountant"
-     ]
-    ]
-   },
-   {
-    "id": "p-nirav-shah",
-    "name": "Nirav Shah",
-    "role": "Energy, Materials & Infrastructure",
-    "img": "/img/team-c4bc3d3b73.webp",
-    "facts": [
-     [
-      "Experience",
-      "20+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2014"
-     ],
-     [
-      "Education",
-      "CFA (ICFAI), B.Com"
-     ]
-    ]
-   },
-   {
-    "id": "p-rajiv-pathak",
-    "name": "Rajiv Pathak",
-    "role": "Banking & Financial Services",
-    "img": "/img/team-0a6040f62a.webp",
-    "facts": [
-     [
-      "Experience",
-      "20+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2015"
-     ],
-     [
-      "Education",
-      "Chartered Accountant"
-     ]
-    ]
-   },
-   {
-    "id": "p-sanket-baheti",
-    "name": "Sanket Baheti",
-    "role": "Consumer Services & Platforms",
-    "img": "/img/team-1b279aad13.webp",
-    "facts": [
-     [
-      "Experience",
-      "10+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2015"
-     ],
-     [
-      "Education",
-      "Master's, Finance"
-     ]
-    ]
-   },
-   {
-    "id": "p-nirav-vasa",
-    "name": "Nirav Vasa",
-    "role": "High-Tech Engineering & Manufacturing Platforms",
-    "img": "/img/team-72c86ae4ac.webp",
-    "facts": [
-     [
-      "Experience",
-      "15+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2025"
-     ],
-     [
-      "Education",
-      "Master's, Capital Markets"
-     ]
-    ]
-   },
-   {
-    "id": "p-karan-shah",
-    "name": "Karan Shah",
-    "role": "Healthcare & Specialty Chemicals",
-    "img": "/img/team-4eac93536f.webp",
-    "facts": [
-     [
-      "Experience",
-      "9+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2021"
-     ],
-     [
-      "Education",
-      "Master's, Finance & Capital Markets"
-     ]
-    ]
-   },
-   {
-    "id": "p-apratim-raychaudhuri",
-    "name": "Apratim Raychaudhuri",
-    "role": "Digital Infrastructure & New-Age Technology",
-    "img": "/img/team-468f99c8ca.webp",
-    "facts": [
-     [
-      "Experience",
-      "5+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2026"
-     ],
-     [
-      "Education",
-      "MBA (IIM Bangalore), B.Tech. (VIT, Vellore)"
-     ],
-     [
-      "Previously",
-      "Kotak Private, Verity Knowledge Solutions"
-     ]
-    ]
-   },
-   {
-    "id": "p-deepanshu-jain",
-    "name": "Deepanshu Jain",
-    "role": "Defence & New-Age Technology",
-    "img": "/img/team-79fc13ab2d.webp",
-    "facts": [
-     [
-      "Experience",
-      "5+ years"
-     ],
-     [
-      "With the firm",
-      "Since 2026"
-     ],
-     [
-      "Education",
-      "MBA, BTech"
-     ],
-     [
-      "Previously",
-      "Barclays, Infosys"
-     ]
-    ]
-   },
-   {
-    "id": "p-kapil-bhagwat",
-    "name": "Kapil Bhagwat",
-    "role": "Data Operations Lead",
-    "img": "/img/team-16d4d94ee2.webp",
-    "facts": [
-     [
-      "Experience",
-      "19 years"
-     ],
-     [
-      "With the firm",
-      "Since 2017"
-     ],
-     [
-      "Education",
-      "B.Com, MBA"
-     ],
-     [
-      "Previously",
-      "Citigroup Global Services, TCS"
-     ]
-    ]
-   }
-  ]
- },
- "approach": [
-  {
-   "h": "Growth is essential",
-   "p": "A company in a high-growth phase, where capital helps it grow faster. What matters is growth compounded over years, not one good year."
-  },
-  {
-   "h": "Moats create value",
-   "p": "Every business has to be unique in its space, with a moat strong enough to protect that compounding."
-  },
-  {
-   "h": "Management matters",
-   "p": "Exceptional leadership and committed founders. On this, there is no compromise."
-  },
-  {
-   "h": "Crowds kill alpha",
-   "p": "We would rather originate and lead than follow a crowded round."
-  },
-  {
-   "h": "Returns come first",
-   "p": "Capital has to earn a high return on equity, and the entry value has to leave room for it. In the end, cash flow is king."
-  },
-  {
-   "h": "Familiarity reduces risk",
-   "p": "We know the sector and the company well, long before we commit."
-  }
- ],
- "feat": [
-  {
-   "id": "co-nxtra",
-   "logo": "/img/98ccb19196.webp",
-   "name": "Nxtra",
-   "tag": "Best-in-Class Execution at Scale in India’s AI Infrastructure Build-Out.",
-   "url": "https://www.nxtra.in",
-   "pts": [
-    "Bharti Airtel’s data centre platform and India’s largest data centre network, with 14 core and 120+ edge facilities nationwide, combining scaled infrastructure with Airtel’s broader ecosystem advantage.",
-    "Scaling from ~300 MW towards 1 GW of AI-ready capacity, led by a high-calibre management team and positioned at the convergence of AI, cloud adoption and data localisation.",
-    "Anchorage invested behind Nxtra’s proven execution and scale, with Alpha Wave Global and Carlyle among the other co-investors in Nxtra’s ~US$1 billion fundraise."
-   ],
-   "q": "Anchorage brings a valuable global perspective on AI, compute and digital infrastructure, coupled with a strong understanding of how these themes are evolving in India. Their perspective adds real value as we build for the next generation of digital infrastructure.",
-   "who": "Gopal Vittal",
-   "role": "Executive Vice Chairman, Bharti Airtel"
-  },
-  {
-   "id": "co-meril",
-   "logo": "/img/7004b0e662.webp",
-   "name": "Meril Life Sciences",
-   "tag": "Ahead of India’s MedTech Inflection.",
-   "url": "https://www.merillife.com",
-   "pts": [
-    "India’s largest medical devices company and a global innovator, with integrated R&D and manufacturing across cardiovascular, orthopaedics, surgical robotics and other advanced medical device categories, including pioneering indigenous technologies such as coronary stents and the Myval TAVR platform.",
-    "Anchorage identified MedTech early as a secular growth opportunity, underpinned by strong healthcare tailwinds and an inflection akin to India’s IT sector, backing Meril and its founders at an early stage of their global growth journey.",
-    "Among Meril’s earliest institutional backers, Anchorage invested alongside Warburg Pincus in 2022 at a ~US$1.8 billion valuation. In 2025 ADIA invested at a ~US$6.6 billion valuation."
-   ],
-   "q": "Our relationship with Rohit and Anchorage spans over 25 years, grounded in trust and a shared long-term vision. They understood what we were building long before its scale was evident, and have remained a trusted partner through our journey.",
-   "who": "Shahid Bilakhia",
-   "role": "Co-founder & Chairman, Meril Life Sciences Group"
-  },
-  {
-   "id": "co-neysa",
-   "logo": "/img/56a1a016f7.webp",
-   "name": "Neysa Networks",
-   "tag": "Early Access to India’s AI Compute Layer.",
-   "url": "https://neysa.ai",
-   "pts": [
-    "Founded by Sharad Sanghi, a pioneer of India’s commercial data centre industry, bringing deep pedigree in building and scaling digital infrastructure.",
-    "Positioned at the heart of India’s AI build-out, providing sovereign, production-grade AI infrastructure for mission-critical enterprise and government workloads.",
-    "One of India’s select AI cloud platforms working with both NVIDIA and AMD, with the capability to deploy and operate GPU infrastructure at scale.",
-    "Anchorage identified and backed Neysa at a formative stage, with the platform subsequently attracting a ~US$1.2 billion Blackstone-led capital commitment to accelerate AI infrastructure deployment across India."
-   ],
-   "q": "Anchorage saw the scale of the opportunity in Neysa before we fully appreciated it. Their conviction in what the business could become was striking at the time, and the journey since has demonstrated the foresight behind that view.",
-   "who": "Sharad Sanghi",
-   "role": "Founder & CEO, Neysa Networks"
-  },
-  {
-   "id": "co-precision",
-   "logo": "/img/93cde5b01d.webp",
-   "name": "Precision Wires",
-   "tag": "Growth Capital Behind an Electrification Leader.",
-   "url": "https://precisionwires.in",
-   "pts": [
-    "One of Asia’s leading winding wire manufacturers, with a track record spanning over three decades and exposure across Power, EVs, Renewables and Data Centres.",
-    "Anchorage invested at a key inflection point in India’s electrification cycle, drawing on a deep familiarity with the sector.",
-    "Growth capital deployed across multiple rounds enabled a record capex programme, accelerating capacity expansion and driving a step-change in earnings growth."
-   ],
-   "q": "Our relationship with the Kotharis goes back three decades, well beyond investment. They have backed us consistently through successive phases of growth and capital raising, the kind of steadfast partnership that is rare to find.",
-   "who": "Milan Mehta",
-   "role": "Chairman & Managing Director, Precision Wires"
-  },
-  {
-   "id": "co-ace",
-   "logo": "/img/99d9c8dd14.webp",
-   "name": "ACE Insurance Brokers",
-   "tag": "Backing a High-Return Specialist in Complex Risk.",
-   "url": "https://aceinsurance.com",
-   "pts": [
-    "Leading Indian insurance broking and risk advisory platform, with over two decades of experience and an integrated offering spanning corporate insurance, risk management and reinsurance.",
-    "A capital-light, exceptionally high-margin model with superior ROCE, where specialist domain knowledge, complex risk structuring and deep client relationships create a durable competitive moat.",
-    "Anchorage invested in ACE for its specialist franchise and exceptional economics. Blackstone holds a majority stake in the business."
-   ],
-   "q": "Anchorage was our first investment partner and understood the quality and potential of our business early. They have been a thoughtful partner through our evolution, supporting us as we scaled and entered our next phase of institutional growth.",
-   "who": "Raj Ajmera",
-   "role": "Founder, ACE Insurance Brokers"
-  },
-  {
-   "id": "co-enviro",
-   "logo": "/img/990ea266ac.webp",
-   "name": "Enviro Infra Engineers",
-   "tag": "From Nascent Player to Water Infrastructure Leader.",
-   "url": "https://www.eiel.in",
-   "pts": [
-    "Integrated water infrastructure player spanning sewage, industrial wastewater and recycling, with in-house capabilities across process design and execution; expanding into Desalination and Zero Liquid Discharge (ZLD) for its next phase of growth.",
-    "Positioned in a ₹20 trillion (~US$240 billion) decade-long opportunity, as water becomes an increasingly critical resource across industries, driven by infrastructure investment, industrial demand and tightening wastewater norms.",
-    "Anchorage identified the water infrastructure opportunity early, backing Enviro at a nascent stage, well ahead of broader market recognition, and supporting its evolution from a small player into a scaled water infrastructure platform."
-   ],
-   "q": "Anchorage recognised the potential of water resource management well before most, and backed us at a very early stage in our journey. The conviction with which they put in capital gave us the confidence to pursue a much larger opportunity and accelerate our growth.",
-   "who": "Manish Jain",
-   "role": "Managing Director, Enviro Infra Engineers"
-  },
-  {
-   "id": "co-thriveni",
-   "logo": "/img/bd8b239384.svg",
-   "name": "Thriveni Earthmovers",
-   "tag": "Backing a Formidable Operator in Critical Minerals.",
-   "url": "https://thriveni.com",
-   "pts": [
-    "Built by Mr. B. Prabhakaran, one of the most dynamic and respected founders in the resources sector, Thriveni has grown into an integrated resources platform and is today part of the broader Lloyds Metals & Energy ecosystem.",
-    "Positioned across resources critical to industrial growth and the AI economy, spanning iron ore, coal, copper and cobalt, with projects across India and DR Congo and an upcoming project in Papua New Guinea.",
-    "Proven turnaround specialist, with a track record of bringing stalled mines to life and rapidly scaling production: a distinctive execution edge in a complex sector.",
-    "Anchorage backed Thriveni for its exceptional execution, strong return ratios and significant growth optionality, with several opportunities identified at investment already translating into live projects."
-   ],
-   "q": "Anchorage brings a depth of understanding of the resources sector that is unusual for an investor. Their ability to understand the operating realities of our business and engage with us from that perspective makes them a highly valued partner.",
-   "who": "B. Prabhakaran",
-   "role": "Founder & Managing Director, Thriveni Earthmovers"
-  },
-  {
-   "id": "co-qicap",
-   "logo": "/img/2f01274676.webp",
-   "name": "Qi Cap",
-   "tag": "Ahead of the Curve on AI-Native Asset Management.",
-   "url": "https://qicap.ai",
-   "pts": [
-    "Founded by Amit Rathi, bringing multi-decade experience across capital and commodity markets and deep expertise in systematic investing.",
-    "Global deeptech platform built around proprietary AI/ML alpha engines and self-learning strategies, combining advanced data science with institutional-scale, low-latency execution; processing ~500 million orders daily with a 100+ member team of IIT-trained engineers and data scientists.",
-    "Anchorage backed Qi Cap early, recognising the potential for AI-native investing to disrupt traditional asset management well before the theme entered the mainstream."
-   ],
-   "q": "Anchorage is an exceptionally sharp investment team with a deep understanding of capital markets and technology. They understood the potential of our AI-led approach early, well before the opportunity became widely recognised.",
-   "who": "Amit Rathi",
-   "role": "Co-founder & CEO, Qi Cap"
-  }
- ],
- "grid": [
-  {
-   "logo": "/img/98ccb19196.webp",
-   "name": "Nxtra Data",
-   "d": "India’s largest data centre network."
-  },
-  {
-   "logo": "/img/7004b0e662.webp",
-   "name": "Meril Life Sciences",
-   "d": "India’s largest home-grown medical device maker."
-  },
-  {
-   "logo": "/img/56a1a016f7.webp",
-   "name": "Neysa Networks",
-   "d": "Among India’s Top 2 AI Neocloud Platforms."
-  },
-  {
-   "logo": "/img/93cde5b01d.webp",
-   "name": "Precision Wires",
-   "d": "One of Asia’s leading winding wire manufacturers."
-  },
-  {
-   "logo": "/img/99d9c8dd14.webp",
-   "name": "ACE Insurance Brokers",
-   "d": "A leading corporate insurance and reinsurance intermediary."
-  },
-  {
-   "logo": "/img/990ea266ac.webp",
-   "name": "Enviro Infra Engineers",
-   "d": "A leading water and wastewater treatment EPC company."
-  },
-  {
-   "logo": "/img/bd8b239384.svg",
-   "name": "Thriveni Earthmovers",
-   "d": "One of India’s largest private mineral value-chain powerhouses."
-  },
-  {
-   "logo": "/img/2f01274676.webp",
-   "name": "Qi Cap",
-   "d": "One of India’s premier AI driven quantitative research trading platforms."
-  },
-  {
-   "logo": "/img/9f1e744a5e.svg",
-   "name": "Inox Clean Energy",
-   "d": "One of India’s fastest-growing integrated clean energy platforms."
-  },
-  {
-   "logo": "/img/9a0a056f99.webp",
-   "name": "Caliber Mining & Logistics",
-   "d": "One of India’s leading mineral resource and logistics platforms."
-  },
-  {
-   "logo": "/img/9c5cddae64.svg",
-   "name": "GREW Solar",
-   "d": "One of India’s leading integrated solar equipment manufacturers."
-  },
-  {
-   "logo": "/img/4172562d7c.webp",
-   "name": "Qucev",
-   "d": "One of India’s most promising electric logistics companies."
-  }
- ],
- "faq": [
-  {
-   "q": "What is Anchorage Capital?",
-   "a": "Anchorage Capital is a SEBI-registered Category II Alternative Investment Fund (registration IN/AIF2/21-22/1003), founded by Rohit Kothari and in operation since 2022. It invests across growth companies in India, largely in the unlisted private space and selectively in listed companies."
-  },
-  {
-   "q": "Who manages Anchorage Capital?",
-   "a": "The fund is managed by Anchorage Alpha Investments Advisor Private Limited. The sponsor is Rohit Kothari, the trustee is Orbis Trusteeship Services Private Limited and the compliance officer is Bhaven Jain."
-  },
-  {
-   "q": "What kind of companies does Anchorage invest in?",
-   "a": "Anchorage is a provider of growth capital. Every investment shares one theme: businesses that are unique in their space, with a decisive moat, backed by exceptional founders. Its approach: growth is essential, moats create value, management matters, crowds kill alpha, returns come first and familiarity reduces risk."
-  },
-  {
-   "q": "Which companies has Anchorage invested in?",
-   "a": "Key investments include Nxtra Data, Meril Life Sciences, Neysa Networks, Precision Wires, ACE Insurance Brokers, Enviro Infra Engineers, Thriveni Earthmovers, Qi Cap, Inox Clean Energy, Caliber Mining &amp; Logistics, GREW Solar and Qucev, among others."
-  },
-  {
-   "q": "How many schemes does Anchorage Capital have?",
-   "a": "Anchorage Capital has three schemes: Scheme I (inception May 2022), Scheme II (inception September 2023) and Scheme III (inception October 2025). Across its schemes the fund manages a collective ~US$389mn, ₹3,736 crore."
-  },
-  {
-   "q": "Who is the founder of Anchorage?",
-   "a": "Rohit Kothari is the Founder and Executive Chairman of Anchorage Alpha. A Chartered Accountant with an MBA from Babson College, he built and scaled Aroni Chemicals and Gwalior Chemicals, and founded Antique Stock Broking Limited in 2008. Anchorage began as the Kothari family office, which has more than 25 years of value-driven investing behind it."
-  },
-  {
-   "q": "Can anyone invest in Anchorage Capital?",
-   "a": "No. Units of Anchorage Capital are offered solely by private placement to eligible investors pursuant to a confidential placement memorandum. This website is for information only and is not an offer or solicitation. Eligible investors can write to <a href=\"mailto:investor@anchoragealpha.com\">investor@anchoragealpha.com</a>."
-  },
-  {
-   "q": "Where is Anchorage Alpha located?",
-   "a": "Anchorage Alpha is at 209/210, 2nd Floor, Arcadia Building, NCPA Marg, Nariman Point, Mumbai, Maharashtra 400021. Telephone: 022-40198600."
-  },
-  {
-   "q": "How can an investor raise a grievance?",
-   "a": "Investors can raise a grievance through SEBI SCORES at <a href=\"https://scores.sebi.gov.in/\" rel=\"noopener\" target=\"_blank\">https://scores.sebi.gov.in/</a> or through the Online Dispute Resolution Portal at <a href=\"https://smartodr.in/\" rel=\"noopener\" target=\"_blank\">https://smartodr.in/</a>."
-  }
- ],
- "pol": [
-  {
-   "t": "Investor Grievance Redressal Policy",
-   "d": "How investor queries and complaints are received, escalated and resolved, with response timelines at each level and access to SEBI SCORES.",
-   "meta": "PDF · 11 pages · 1.5 MB",
-   "href": "/policies/0adf660ead.pdf"
-  },
-  {
-   "t": "Stewardship Code",
-   "d": "Our principles for monitoring, engaging with and voting at investee companies, in line with SEBI's stewardship framework.",
-   "meta": "PDF · 10 pages · 1.0 MB",
-   "href": "/policies/f973bf95f4.pdf"
-  },
-  {
-   "t": "Conflict of Interest Policy",
-   "d": "How potential conflicts between investors, the investment manager, the sponsor and service providers are identified, managed and disclosed.",
-   "meta": "PDF · 11 pages · 791 KB",
-   "href": "/policies/91285fb570.pdf"
-  },
-  {
-   "t": "Risk Management Policy",
-   "d": "The framework used to identify, assess, mitigate and monitor risks across the fund, its schemes and its investments.",
-   "meta": "PDF · 14 pages · 822 KB",
-   "href": "/policies/941d3d8dbc.pdf"
-  },
-  {
-   "t": "AML, CFT and KYC Policy",
-   "d": "Anti-money laundering, counter-terrorist financing and know-your-customer procedures applied to every investor in the fund.",
-   "meta": "PDF · 37 pages · 4.7 MB",
-   "href": "/policies/4f935f0891.pdf"
-  }
- ],
- "defs": {
-  "note": "Terms used on this website and in fund documents. These are summaries for convenience; the scheme documents and applicable regulations prevail.",
-  "items": [
-   [
-    "Alternative Investment Fund (AIF)",
-    "A privately pooled investment vehicle established in India that collects funds from investors for investing in accordance with a defined investment policy, and is registered with SEBI under the SEBI (Alternative Investment Funds) Regulations, 2012."
-   ],
-   [
-    "Category II AIF",
-    "An AIF that does not fall under Category I or Category III and does not undertake leverage or borrowing other than to meet day-to-day operational requirements, as permitted under the SEBI (AIF) Regulations. Private equity and growth capital funds are typically Category II AIFs."
-   ],
-   [
-    "SEBI",
-    "The Securities and Exchange Board of India, the regulator of India's securities markets and of all Alternative Investment Funds."
-   ],
-   [
-    "Scheme",
-    "A separate investment programme launched under the fund, with its own investors, commitments and terms. Anchorage Capital has three schemes: Scheme I, Scheme II and Scheme III."
-   ],
-   [
-    "Sponsor",
-    "The person who sets up the AIF and makes a continuing interest commitment to it. The sponsor of Anchorage Capital is Rohit Kothari."
-   ],
-   [
-    "Investment Manager",
-    "The entity appointed to manage the investments of the fund and its schemes. For Anchorage Capital this is Anchorage Alpha Investments Advisor Private Limited."
-   ],
-   [
-    "Trustee",
-    "The independent entity that holds the fund's assets in trust for the benefit of investors and oversees the investment manager. For Anchorage Capital this is Orbis Trusteeship Services Private Limited."
-   ],
-   [
-    "Investor / Contributor / Unitholder",
-    "A person or entity that invests in the fund by making a capital commitment under a binding contribution agreement, and holds units of a scheme."
-   ],
-   [
-    "Capital commitment",
-    "The total amount an investor agrees to contribute to a scheme over its life, called in stages as investments are made."
-   ],
-   [
-    "Drawdown",
-    "A request by the investment manager for investors to pay in a portion of their capital commitment, usually to fund an investment or fund expenses."
-   ],
-   [
-    "Net Asset Value (NAV)",
-    "The value of a scheme's investments and other assets, less its liabilities, as determined under the applicable valuation norms."
-   ],
-   [
-    "Assets Under Management (AUM)",
-    "As used on this website, the aggregate of uncalled capital commitments and the net asset value of the investments across the schemes of Anchorage Capital."
-   ],
-   [
-    "Private Placement Memorandum (PPM)",
-    "The confidential offer document of a scheme that sets out its strategy, terms, fees, risks and other disclosures. Units of Anchorage Capital are offered only by private placement under a PPM."
-   ],
-   [
-    "KYC",
-    "Know Your Customer: the process of verifying the identity and address of every investor, and of any beneficial owner, before and during the investment relationship."
-   ],
-   [
-    "Beneficial Owner",
-    "The natural person or persons who ultimately own, control or influence an investor, including those who exercise ultimate effective control over it."
-   ],
-   [
-    "Stewardship",
-    "The responsibility of an institutional investor to monitor and engage with the companies it invests in on strategy, performance, risk, capital structure and governance, including by voting."
-   ],
-   [
-    "SEBI SCORES",
-    "SEBI Complaints Redress System, SEBI's online platform where investors can lodge and track complaints against registered intermediaries: https://scores.sebi.gov.in/"
-   ],
-   [
-    "Online Dispute Resolution (ODR)",
-    "The Online Dispute Resolution portal for the Indian securities market, for resolving disputes through online conciliation and arbitration: https://smartodr.in/"
-   ]
-  ]
- },
- "legal": [
-  "<strong>Important legal information.</strong> This website is issued by Anchorage Alpha Investments Advisor Private Limited, registered with the Securities and Exchange Board of India as the investment manager of a Category II Alternative Investment Fund, and is provided for information purposes only. Nothing on it constitutes a prospectus, a private placement memorandum, an offer document, or an offer or solicitation to purchase or sell interests in any scheme or investment product, in any jurisdiction where such an offer or solicitation would be unlawful. Units of Anchorage Capital are offered solely by private placement to eligible investors pursuant to a confidential placement memorandum.",
-  "<strong>Past performance is not indicative of future results.</strong> Any returns referred to are gross, before fees, expenses and profit sharing, and are not a representation of any investor's actual or expected return. Investments in the scheme are subject to risks including loss of capital, illiquidity, and market and other risks. Registration or certification by SEBI or any other regulatory authority does not in any way guarantee the performance of the scheme or provide any assurance of returns to investors. Investors must read all scheme-related documents carefully before investing and should seek independent professional advice on suitability in light of their own risk appetite, financial circumstances and goals.",
-  "Investments referred to under Legacy were made by the sponsor and the family office, and not by the Anchorage Capital schemes. Companies named do not constitute a complete list of investments, and transaction details reflect publicly announced information. Rupee amounts are converted to US dollars at an indicative rate and shown for reference only. Third-party names are the property of their respective owners and are shown for identification purposes; their use does not imply any endorsement of Anchorage Alpha, Anchorage Capital or its schemes.",
-  "Nothing on this website constitutes investment, legal, tax or accounting advice, and no claim shall be made against Anchorage Alpha Investments Advisor Private Limited, its affiliates or employees claiming any influence, recommendation or advice in respect of an investment decision."
- ],
- "privacy": [
-  "This website is for information only. It has no sign-in, no forms and no advertising, and we do not use cookies or analytics tools to track visitors. The typefaces are loaded from Google Fonts, so your browser may connect to Google's servers when a page loads.",
-  "If you write to us by email, we use the details you send only to respond to you, and we keep them as long as needed for that purpose and as required by law and our regulatory obligations. We do not sell personal information.",
-  "Information collected from investors when they invest is handled under the fund's policies, including the AML, CFT and KYC Policy, and under applicable law.",
-  "For any question about privacy, write to <a href=\"mailto:investor@anchoragealpha.com\">investor@anchoragealpha.com</a>."
- ],
- "footer": [
-  "Anchorage Alpha Investments Advisor Private Limited is the investment manager of Anchorage Capital, a SEBI registered Category II Alternative Investment Fund (registration no. IN/AIF2/21-22/1003).",
-  "Units are offered solely by private placement to eligible investors. Nothing on this website is an offer or solicitation. Past performance is not indicative of future results, and investments are subject to risks, including loss of capital. <a class=\"nw\" href=\"#legal\">Read the full legal information.</a>",
-  "© 2026 Anchorage Alpha Investments Advisor Private Limited. All rights reserved."
- ]
 }
