@@ -865,3 +865,10 @@ a.inv-card{color:inherit;text-decoration:none;cursor:pointer}
 a.inv-card:hover,a.inv-card:focus-visible{border-color:#C9B89B;transform:translateY(-2px);box-shadow:0 10px 24px -16px rgba(0,0,0,.25)}
 a.inv-card:hover .inv-arrow{transform:translate(2px,-2px);color:var(--ink)}
 .inv-card.is-static{cursor:default}
+
+/* ===== v35 ===== */
+/* placeholder until a logo file is supplied */
+.inv-logo-tx{font:500 .78rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--deep);opacity:.75}
+/* hero testimonials: appear with the tagline, not seconds later; quicker page changes */
+.hv{animation:softIn 1.2s .9s cubic-bezier(.25,.8,.25,1) both}
+.hv-page{transition:opacity 1s cubic-bezier(.4,0,.2,1),transform 1.2s var(--ease),filter .9s ease}

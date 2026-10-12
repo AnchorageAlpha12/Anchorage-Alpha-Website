@@ -618,7 +618,7 @@ function Portfolio() {
         <Rv as="h2" className="h2">Key Investments</Rv>
         <ul className="inv-grid">{C.grid.map((g, i) => {
           const inner = <>
-            <span className="inv-logo"><img src={g.logo} alt="" loading="lazy" /></span>
+            <span className="inv-logo">{g.logo ? <img src={g.logo} alt="" loading="lazy" /> : <span className="inv-logo-tx">{g.name}</span>}</span>
             <span className="inv-name">{g.name}</span>
             <span className="inv-d">{g.d}</span>
             {g.url && arrow}
