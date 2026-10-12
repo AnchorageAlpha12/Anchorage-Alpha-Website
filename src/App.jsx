@@ -26,19 +26,33 @@ const pauseScroll = (pause) => {
 }
 
 const NAV_H = 68
-/* where each nav item should land: the section's content, clear of the fixed header */
+/* where each nav item should land: the section's key content, centred in the space below the fixed header
+   (top-aligned under the header when it is taller than the screen) */
+const FOCUS = {
+  about: ['#about .label', '.schemes-sec .note'],
+  legacy: ['#legacy .panel-g', '#legacy .panel-g'],
+  investors: ['#investors .label', '#investors .panel']
+}
 const targetOf = (id) => {
   if (id === 'top') return 0
   const el = document.getElementById(id)
   if (!el) return 0
-  const y = el.getBoundingClientRect().top + window.scrollY
+  const sy = window.scrollY, avail = window.innerHeight - NAV_H
   if (id === 'approach') {
     const track = el.querySelector('.ap-track'), pin = el.querySelector('.ap-pin')
-    if (pin && track && getComputedStyle(pin).position === 'sticky') return y + (parseFloat(getComputedStyle(track).paddingTop) || 0)
+    if (pin && track && getComputedStyle(pin).position === 'sticky') return el.getBoundingClientRect().top + sy + (parseFloat(getComputedStyle(track).paddingTop) || 0)
     const head = el.querySelector('.ap-head')
-    if (head) return head.getBoundingClientRect().top + window.scrollY - NAV_H - 28
+    if (head) return head.getBoundingClientRect().top + sy - NAV_H - 28
   }
-  return Math.max(0, y - NAV_H)
+  const f = FOCUS[id]
+  const a = f && document.querySelector(f[0]), b = f && document.querySelector(f[1])
+  if (a && b) {
+    const top = a.getBoundingClientRect().top + sy, bottom = b.getBoundingClientRect().bottom + sy
+    const h = bottom - top
+    if (h <= avail - 24) return Math.max(0, top - NAV_H - (avail - h) / 2)
+    return Math.max(0, top - NAV_H - 20)
+  }
+  return Math.max(0, el.getBoundingClientRect().top + sy - NAV_H)
 }
 
 const goTo = (id) => {
@@ -568,7 +582,7 @@ function Team() {
       <div className="wrap">
         <Label>Team</Label>
         <div className="head2">
-          <Rv as="h2" className="h2">Our People<sup>*</sup></Rv>
+          <Rv as="h2" className="h2">Our People</Rv>
           <Rv as="p" d={120} className="lede">Led by Rohit Kothari, Founder &amp; Executive Chairman, our specialists cover every major sector.</Rv>
         </div>
         <div className="grid">{C.team.members.map((m, i) => (
@@ -646,6 +660,14 @@ function Investors() {
   useLayoutEffect(() => {
     const e = refs.current[t]
     if (e) setInd({ x: e.offsetLeft, w: e.offsetWidth })
+  }, [t])
+  /* desktop: if the newly opened tab runs past the bottom of the screen, bring the whole block into view */
+  const firstTab = useRef(true)
+  useEffect(() => {
+    if (firstTab.current) { firstTab.current = false; return }
+    if (window.innerWidth < 861) return
+    const panel = document.querySelector('#investors .panel')
+    if (panel && panel.getBoundingClientRect().bottom > window.innerHeight - 8) goTo('investors')
   }, [t])
 
   const toggle = (i) => setQs(s => {
