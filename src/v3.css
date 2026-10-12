@@ -711,7 +711,7 @@ main #about.about2{background:var(--stone);margin-top:0;padding:clamp(64px,6.5vw
 
 /* 6. FAQs and policies: single generous column */
 .faq-cols{display:block;max-width:960px}
-.faq-cols .faq-list+.faq-list .faq:first-child{border-top:0}
+.faq-cols .faq-list+.faq-list .faq:first-child{border-top:1px solid var(--rule)}
 .faq-cols .faq-list:first-child .faq:last-child{border-bottom:0}
 .faq-cols .faq-list:last-child .faq:last-child{border-bottom:1px solid var(--rule)}
 .faq>button{padding:20px 0;font-size:18px;min-height:66px}
