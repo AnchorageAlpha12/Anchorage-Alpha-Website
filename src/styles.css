@@ -31,7 +31,7 @@ sup{font-size:.45em;vertical-align:super;margin-left:.1em}
 .scrim{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(11,31,51,.34),rgba(11,31,51,0) 62%),linear-gradient(180deg,rgba(11,31,51,.42),rgba(11,31,51,.1) 38%,rgba(11,31,51,.5))}
 .hero-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gut);transform:translate3d(0,calc(var(--p,0)*-70px),0);opacity:calc(1 - var(--p,0)*1.6);will-change:transform,opacity}
 .hero-logo{width:clamp(210px,22vw,320px);filter:drop-shadow(0 2px 28px rgba(11,31,51,.4));animation:rise 2.4s 1s var(--ease) both}
-.hero-line{margin-top:clamp(1.2rem,2vw,1.8rem);max-width:46ch;font:400 clamp(1.5rem,2.8vw,2.4rem)/1.2 var(--serif);letter-spacing:.01em;text-wrap:balance;text-shadow:0 1px 18px rgba(11,31,51,.45);animation:rise 2.2s 1.9s var(--ease) both}
+.hero-line{margin-top:clamp(1.2rem,2vw,1.8rem);max-width:46ch;font:400 clamp(1.38rem,2.35vw,2.02rem)/1.24 var(--serif);letter-spacing:.01em;text-wrap:balance;text-shadow:0 1px 18px rgba(11,31,51,.45);animation:rise 2.2s 1.9s var(--ease) both}
 .cue{position:absolute;left:50%;bottom:30px;width:30px;height:64px;transform:translateX(-50%);animation:fade 2s 3s both}
 .cue i{position:absolute;left:50%;top:0;width:1px;height:100%;background:rgba(250,247,242,.28);overflow:hidden}
 .cue i::after{content:'';position:absolute;inset:0;background:var(--ivory);animation:drip 2.8s cubic-bezier(.65,0,.2,1) infinite}
@@ -349,7 +349,7 @@ footer a:hover{color:var(--sand);text-decoration-color:var(--sand)}
 
 @media(max-width:400px){
   .hero-logo{width:min(72vw,210px)}
-  .hero-line{font-size:1.3rem}
+  .hero-line{font-size:1.2rem}
   .stat b{font-size:2rem}
   .nm{font-size:1rem}
   .scheme{padding:22px 18px 20px}

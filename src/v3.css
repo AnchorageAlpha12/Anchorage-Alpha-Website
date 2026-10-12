@@ -692,8 +692,8 @@ main #about.about2{background:var(--stone);margin-top:0;padding:clamp(64px,6.5vw
 .ab2-bg{top:0}
 .ab2-bg::before{-webkit-mask:linear-gradient(180deg,rgba(0,0,0,.55) 0,#000 140px,#000 calc(100% - 200px),transparent 100%),linear-gradient(90deg,rgba(0,0,0,.55) 0,rgba(0,0,0,.75) 40%,#000 70%);-webkit-mask-composite:source-in;mask:linear-gradient(180deg,rgba(0,0,0,.55) 0,#000 140px,#000 calc(100% - 200px),transparent 100%),linear-gradient(90deg,rgba(0,0,0,.55) 0,rgba(0,0,0,.75) 40%,#000 70%);mask-composite:intersect}
 .about2 .label{margin-bottom:clamp(1.3rem,2vw,1.9rem)}
-.hv{bottom:clamp(30px,5vh,56px)}
-@media(max-width:860px){main #about.about2{padding:56px var(--gut) 52px}.hv{bottom:18px}.hero-in{padding-bottom:clamp(220px,40vh,300px)}}
+.hv{bottom:clamp(16px,2.6vh,36px)}
+@media(max-width:860px){main #about.about2{padding:56px var(--gut) 52px}.hv{bottom:10px}.hero-in{padding-bottom:clamp(220px,40vh,300px)}}
 
 /* 4. our people: everyone stays in colour; the hovered leader lifts onto a soft card */
 .team-sec .grid:has(.card:hover) .card:not(:hover) .ph img{filter:none;opacity:1}
