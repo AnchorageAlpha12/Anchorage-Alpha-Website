@@ -31,7 +31,7 @@
 
 /* trigger */
 #a11y .a11y-trigger{
-  position:fixed;left:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  position:fixed;left:max(20px, calc(16px + env(safe-area-inset-left,0px)));bottom:max(20px, calc(20px + env(safe-area-inset-bottom,0px)));
   width:56px;height:56px;border-radius:50%;z-index:150;
   display:flex;align-items:center;justify-content:center;
   background:var(--d);border:2px solid var(--ac);color:#fff;
@@ -99,9 +99,9 @@
 #a11y .a11y-dict a{display:inline-block;margin-top:6px;color:var(--d);text-decoration:underline;font-weight:600}
 
 @media(max-width:560px){
-  #a11y .a11y-panel{left:10px;right:10px;width:auto;bottom:82px;max-height:calc(100vh - 156px)}
-  #a11y .a11y-trigger{left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:52px;height:52px}
-  #a11y .a11y-trigger svg{width:25px;height:25px}
+  #a11y .a11y-panel{left:max(10px, env(safe-area-inset-left,10px));right:max(10px, env(safe-area-inset-right,10px));width:auto;bottom:max(76px, calc(76px + env(safe-area-inset-bottom,0px)));max-height:calc(100vh - 160px - env(safe-area-inset-bottom,0px))}
+  #a11y .a11y-trigger{left:max(14px, calc(10px + env(safe-area-inset-left,0px)));bottom:max(14px, calc(14px + env(safe-area-inset-bottom,0px)));width:48px;height:48px}
+  #a11y .a11y-trigger svg{width:23px;height:23px}
   #a11y .a11y-head{padding:10px 12px;border-radius:12px 12px 0 0}
   #a11y .a11y-title{font-size:13px}
   #a11y .a11y-hbtn{width:28px;height:28px}

@@ -82,8 +82,8 @@
 @media(prefers-reduced-motion:reduce){.split-w .w>span{transform:none}.rv.blurin{filter:none}.depth,.more{transition:none}}
 /* ---- round 2 ---- */
 /* hero: full-viewport video, nav clean over it */
-.hero{height:calc(100svh + 17vh);min-height:calc(540px + 17vh)}
-.hero-in{bottom:auto;height:100svh}
+.hero{height:calc(100vh + 17vh);height:calc(100svh + 17vh);min-height:calc(540px + 17vh)}
+.hero-in{bottom:auto;height:100vh;height:100svh}
 .cue{bottom:calc(17vh + 30px)}
 .nav:not(.solid){background:none!important;border-bottom-color:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
 /* about -> schemes: stone floor dissolves into the next scene */
@@ -149,7 +149,7 @@
 #portfolio{background:var(--ivory)!important;background-image:none!important}
 .approach-sec::after{background:linear-gradient(180deg,rgba(11,31,51,0),rgba(39,70,96,.4) 34%,rgba(140,163,179,.5) 58%,rgba(250,247,242,.9) 86%,var(--ivory))}
 /* ---- round 4: transparent wall artwork overlays the hero video ---- */
-.hero{height:100svh;min-height:540px}
+.hero{height:100vh;height:100svh;min-height:540px}
 .hero-in{height:auto;bottom:0}
 .cue{bottom:30px}
 .about{margin-top:0;z-index:2;min-height:max(50vw,105vh);padding-top:clamp(80px,9vw,150px);padding-bottom:clamp(60px,8vw,120px)}
@@ -160,13 +160,13 @@
 @media(max-width:860px){.about .bgimg{width:230%;left:auto;right:0}.about .wrap{padding:24px 20px;background:rgba(250,247,242,.7);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:10px}}
 
 /* ---- round 5 (kept from v7): one-line disclaimers on desktop ---- */
-@media(min-width:900px){.legacy-sec .stats~.note{max-width:none;white-space:nowrap}}
-@media(min-width:1200px){.schemes-sec .note{max-width:none;white-space:nowrap}}
+@media(min-width:900px){.legacy-sec .stats~.note{max-width:none;text-wrap:balance}}
+@media(min-width:1200px){.schemes-sec .note{max-width:none;text-wrap:balance}}
 /* ---- round 6: full video in the hero, wall artwork rises over it (v5 overlay) ---- */
 :root{--ov:22vw}
 @media(max-width:860px){:root{--ov:52vw}}
-.hero{height:calc(100svh + var(--ov));min-height:calc(540px + var(--ov))}
-.hero-in{height:100svh;bottom:auto}
+.hero{height:calc(100vh + var(--ov));height:calc(100svh + var(--ov));min-height:calc(540px + var(--ov))}
+.hero-in{height:100vh;height:100svh;bottom:auto}
 .cue{bottom:calc(var(--ov) + 30px)}
 .about{margin-top:0}
 .about .bgimg{transform:translateY(calc(-1 * var(--ov)))}

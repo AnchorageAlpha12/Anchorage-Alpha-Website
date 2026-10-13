@@ -2,7 +2,8 @@ import React, { useEffect, useLayoutEffect, useRef, useState, useCallback, memo 
 import Lenis from 'lenis'
 import C0 from './content.json'
 import { Split, DepthMeter } from './v2.jsx'
-import { HeroVoices, useSpot, Glow } from './v3.jsx'
+import { HeroVoices, Glow } from './v3.jsx'
+import { useSpot } from './useSpot.js'
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
 const U = p => BASE + p
@@ -25,7 +26,13 @@ const pauseScroll = (pause) => {
   }
 }
 
-const NAV_H = 68
+/* the header is 68px plus the device safe-area inset (notch/home indicator), so measure the
+   real bar instead of a hardcoded number - otherwise anchors land under it on those devices */
+const navH = () => {
+  const n = document.querySelector('.nav')
+  const h = n && n.getBoundingClientRect().height
+  return h > 0 ? h : 68
+}
 /* where each nav item should land: the section's key content, centred in the space below the fixed header
    (top-aligned under the header when it is taller than the screen) */
 const FOCUS = {
@@ -37,7 +44,7 @@ const targetOf = (id) => {
   if (id === 'top') return 0
   const el = document.getElementById(id)
   if (!el) return 0
-  const sy = window.scrollY, avail = window.innerHeight - NAV_H
+  const sy = window.scrollY, NAV_H = navH(), avail = window.innerHeight - NAV_H
   if (id === 'approach') {
     const track = el.querySelector('.ap-track'), pin = el.querySelector('.ap-pin')
     if (pin && track && getComputedStyle(pin).position === 'sticky') return el.getBoundingClientRect().top + sy + (parseFloat(getComputedStyle(track).paddingTop) || 0)
