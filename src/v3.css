@@ -838,9 +838,8 @@ main #about.about2{background:var(--ivory)}
 
 /* mobile menu: refined type */
 @media(max-width:980px){
- .sheet{gap:0;counter-reset:nav;padding-top:40px}
- .sheet a{counter-increment:nav;display:flex;align-items:baseline;gap:18px;padding:13px 0;border-bottom:1px solid rgba(250,247,242,.1);font:400 1.3rem/1.2 var(--serif);letter-spacing:.005em;color:rgba(250,247,242,.9);transition:color .4s,padding .5s var(--ease)}
- .sheet a::before{content:counter(nav,decimal-leading-zero);font:400 .6rem/1 var(--mono);letter-spacing:.16em;color:#D9BC8C;opacity:.85}
+ .sheet{gap:0;padding-top:40px}
+ .sheet a{display:flex;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(250,247,242,.1);font:400 1.3rem/1.2 var(--serif);letter-spacing:.005em;color:rgba(250,247,242,.9);transition:color .4s,padding .5s var(--ease)}
  .sheet a:first-child{border-top:1px solid rgba(250,247,242,.1)}
  .sheet a:active{color:#D9BC8C}
 }
